@@ -1,37 +1,31 @@
-body {
-  background-color: #f8f9fa;
-  font-family: "Segoe UI", sans-serif;
-}
-
-/* כותרת עליונה */
-.header {
-  background-color: #8b2e24;
-  color: white;
-  padding: 3rem 1rem;
-  text-align: center;
-}
-
-.logo {
-  height: 80px;
-  margin-bottom: 1rem;
-}
-
-/* פריטי ציר זמן */
-.timeline-item {
-  border-right: 4px solid #8b2e24;
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
-}
-
-/* תחתית */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #f1f1f1;
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: 2rem;
-}
+ body {
+      background-color: #f8f9fa;
+    }
+    .header {
+      background: linear-gradient(to bottom, #343a40, #212529);
+      color: white;
+      padding: 4rem 0;
+    }
+    .logo {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background-color: #212529;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 4rem;
+    }
+    .timeline-item {
+      background: #ffffff;
+      border-right: 5px solid #0d6efd;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+    }
+    section h2 {
+      border-bottom: 2px solid #0d6efd;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
