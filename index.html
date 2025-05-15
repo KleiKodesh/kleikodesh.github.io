@@ -2,97 +2,75 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>כלי קודש - עורך תורני</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
   <style>
     body {
-      font-family: sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      direction: rtl;
+      background-color: #f8f9fa;
     }
     header {
-      background: #8b2e24;
+      background-color: #8b2e24;
       color: white;
-      padding: 2rem;
+      padding: 2rem 1rem;
       text-align: center;
     }
     header img {
       height: 80px;
       margin-bottom: 1rem;
     }
-    main {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    .download {
-      display: inline-block;
-      background: #3498db;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 1rem;
-    }
-    .timeline {
-      margin-top: 3rem;
-    }
     .timeline-item {
+      border-right: 4px solid #8b2e24;
       background: white;
-      border-right: 5px solid #8b2e24;
-      margin-bottom: 1rem;
       padding: 1rem;
-      box-shadow: 0 0 4px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
     }
     footer {
       text-align: center;
       padding: 1rem;
-      color: #666;
+      background-color: #f1f1f1;
       font-size: 0.9rem;
-    }
-    .lang-switch {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
+      color: #555;
     }
   </style>
 </head>
 <body>
 
-  <div class="lang-switch">
-    <a href="?lang=en">English</a> | <strong>עברית</strong>
-  </div>
-
-  <header>
+<header>
+  <div class="container">
     <img src="Klei_Kodesh.png" alt="אייקון כלי קודש" />
-    <h1>כלי קודש - עורך תורני ל-Word</h1>
-    <p>תוסף מתקדם לעריכה תורנית בתוך Microsoft Word. כולל כלים לבדיקות תחביר, ניקוד, קיצורים תורניים ועוד.</p>
-    <a href="InstallerUrlHere.exe" class="download" download>📥 הורד את ההתקנה</a>
-  </header>
+    <h1 class="display-5">כלי קודש</h1>
+    <p class="lead">תוסף מתקדם לעריכה תורנית בתוך Microsoft Word</p>
+    <a href="InstallerUrlHere.exe" class="btn btn-primary btn-lg mt-3" download>📥 הורד את ההתקנה</a>
+  </div>
+</header>
 
-  <main>
+<main class="container my-5">
+  <section>
     <h2>מה הכלי כולל?</h2>
-    <ul>
-      <li>המרת טקסטים תורניים לניקוד תקני</li>
-      <li>כלי קיצורים תורניים ואוטומציה</li>
-      <li>בדיקת מבנה מסמכים לפי מקורות</li>
-      <li>תמיכה מלאה ב-RTL ובפורמטים תורניים</li>
+    <ul class="list-group list-group-flush mb-4">
+      <li class="list-group-item">המרת טקסטים תורניים לניקוד תקני</li>
+      <li class="list-group-item">קיצורים תורניים ואוטומציה</li>
+      <li class="list-group-item">בדיקת מבנה מסמכים לפי מקורות</li>
+      <li class="list-group-item">תמיכה מלאה ב-RTL ופורמטים תורניים</li>
     </ul>
+  </section>
 
-    <div class="timeline">
-      <h2>יומן עדכונים</h2>
-      <div class="timeline-item">
-        <strong>14/05/2025:</strong> הושקה גרסה 1.0 🎉  
-        <p>כוללת את הבסיס, התקנה ל-Windows, ממשק עברי וכלים ראשוניים.</p>
-      </div>
-      <!-- עדכונים נוספים ייכנסו כאן -->
+  <section>
+    <h2 class="mb-3">יומן עדכונים</h2>
+    <div class="timeline-item">
+      <strong>14/05/2025:</strong> הושקה גרסה 1.0 🎉  
+      <p>כוללת את הבסיס, התקנה ל-Windows, ממשק עברי וכלים ראשוניים.</p>
     </div>
-  </main>
+    <!-- הוסף כאן עדכונים נוספים -->
+  </section>
+</main>
 
-  <footer>
-    &copy; 2025 כלי קודש - כל הזכויות שמורות
-  </footer>
+<footer>
+  &copy; 2025 כלי קודש - כל הזכויות שמורות
+</footer>
 
 </body>
 </html>
