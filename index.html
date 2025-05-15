@@ -9,38 +9,82 @@
 </head>
 <body>
 
-<header>
+<!-- סרגל ניווט -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div class="container">
-    <img src="Klei_Kodesh.png" alt="אייקון כלי קודש" />
+    <a class="navbar-brand" href="#">כלי קודש</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#features">מה הכלי כולל</a></li>
+        <li class="nav-item"><a class="nav-link" href="#updates">יומן עדכונים</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">צור קשר</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- כותרת -->
+<header class="header">
+  <div class="container text-center">
+    <img src="Klei_Kodesh.png" alt="אייקון כלי קודש" class="logo" />
     <h1 class="display-5">כלי קודש</h1>
     <p class="lead">תוסף מתקדם לעריכה תורנית בתוך Microsoft Word</p>
     <a href="InstallerUrlHere.exe" class="btn btn-primary btn-lg mt-3" download>📥 הורד את ההתקנה</a>
   </div>
 </header>
 
+<!-- תוכן -->
 <main class="container my-5">
-  <section>
+  <!-- תכונות -->
+  <section id="features">
     <h2>מה הכלי כולל?</h2>
-    <ul class="list-group list-group-flush mb-4">
-      <li class="list-group-item">המרת טקסטים תורניים לניקוד תקני</li>
-      <li class="list-group-item">קיצורים תורניים ואוטומציה</li>
-      <li class="list-group-item">בדיקת מבנה מסמכים לפי מקורות</li>
-      <li class="list-group-item">תמיכה מלאה ב-RTL ופורמטים תורניים</li>
-    </ul>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col"><div class="card h-100 shadow-sm"><div class="card-body">המרת טקסטים תורניים לניקוד תקני</div></div></div>
+      <div class="col"><div class="card h-100 shadow-sm"><div class="card-body">קיצורים תורניים ואוטומציה</div></div></div>
+      <div class="col"><div class="card h-100 shadow-sm"><div class="card-body">בדיקת מבנה מסמכים לפי מקורות</div></div></div>
+      <div class="col"><div class="card h-100 shadow-sm"><div class="card-body">תמיכה מלאה ב-RTL ופורמטים תורניים</div></div></div>
+    </div>
   </section>
 
-  <section>
+  <!-- יומן עדכונים -->
+  <section id="updates" class="mt-5">
     <h2 class="mb-3">יומן עדכונים</h2>
     <div class="timeline-item">
       <strong>14/05/2025:</strong> הושקה גרסה 1.0 🎉  
       <p>כוללת את הבסיס, התקנה ל-Windows, ממשק עברי וכלים ראשוניים.</p>
     </div>
+    <!-- ניתן להוסיף עדכונים נוספים כאן -->
+  </section>
+
+  <!-- צור קשר -->
+  <section id="contact" class="mt-5">
+    <h2>צור קשר</h2>
+    <form>
+      <div class="mb-3">
+        <label for="name" class="form-label">שם</label>
+        <input type="text" class="form-control" id="name" placeholder="הכנס את שמך">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">דוא״ל</label>
+        <input type="email" class="form-control" id="email" placeholder="your@email.com">
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">הודעה</label>
+        <textarea class="form-control" id="message" rows="4" placeholder="כתוב את הודעתך כאן..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">שלח</button>
+    </form>
   </section>
 </main>
 
+<!-- תחתית -->
 <footer>
   &copy; 2025 כלי קודש - כל הזכויות שמורות
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
