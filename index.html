@@ -62,21 +62,21 @@
   <!-- צור קשר -->
   <section id="contact" class="mt-5">
     <h2>צור קשר</h2>
-    <form>
-      <div class="mb-3">
-        <label for="name" class="form-label">שם</label>
-        <input type="text" class="form-control" id="name" placeholder="הכנס את שמך">
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">דוא״ל</label>
-        <input type="email" class="form-control" id="email" placeholder="your@email.com">
-      </div>
-      <div class="mb-3">
-        <label for="message" class="form-label">הודעה</label>
-        <textarea class="form-control" id="message" rows="4" placeholder="כתוב את הודעתך כאן..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-success">שלח</button>
-    </form>
+   <form action="https://formspree.io/f/xpwdkgve"  method="POST"  enctype="multipart/form-data">
+  <label>
+    דוא״ל:
+    <input type="email" name="email">
+  </label>
+     <label>
+    הודעה:
+    <textarea name="message"></textarea>
+  </label>
+  <label>
+    קבצים מצורפים:
+    <input type="file" name="upload">
+  </label>
+  <button type="submit">Send</button>
+</form>
   </section>
 </main>
 
