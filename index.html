@@ -3,10 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>כלי קודש - ארגז כלים לעורך התורני</title>
+  <title>כלי קודש - תוסף לוורד עם כלים לעורך התורני</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="Klei_Kodesh.ico" type="image/x-icon">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .header {
+      background: linear-gradient(to bottom, #343a40, #212529);
+      color: white;
+      padding: 4rem 0;
+    }
+    .logo {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background-color: #212529;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 4rem;
+    }
+    .timeline-item {
+      background: #ffffff;
+      border-right: 5px solid #0d6efd;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+    }
+    section h2 {
+      border-bottom: 2px solid #0d6efd;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -20,45 +53,72 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="#download">הורדה</a></li>
-        <li class="nav-item"><a class="nav-link" href="#features">מה הכלי כולל</a></li>
-        <li class="nav-item"><a class="nav-link" href="#updates">יומן עדכונים</a></li>
+        <li class="nav-item"><a class="nav-link" href="#features">תכונות</a></li>
+        <li class="nav-item"><a class="nav-link" href="#updates">עדכונים</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">צור קשר</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-
 <!-- כותרת -->
-<header class="header" id="download">
-  <div class="container text-center">
+<header class="header text-center" id="download">
+  <div class="container">
     <img src="Klei_Kodesh.png" alt="אייקון כלי קודש" class="logo" />
-    <h1 class="display-5">כלי קודש</h1>
-    <p class="lead">תוסף מתקדם לעריכה תורנית בתוך Microsoft Word</p>
-    <a href="InstallerUrlHere.exe" class="btn btn-primary btn-lg mt-3" download>📥 הורד את ההתקנה</a>
+    <h1 class="display-4 fw-bold">כלי קודש</h1>
+    <p class="lead">תוסף מקצועי ל-Microsoft Word הכולל ארגז כלים לעורך התורני</p>
+    <a href="InstallerUrlHere.exe" class="btn btn-primary btn-lg mt-3" download>📥 הורד את התוסף עכשיו</a>
   </div>
 </header>
 
-
 <!-- תוכן -->
 <main class="container my-5">
+
   <!-- תכונות -->
   <section id="features">
-    <h2>מה הכלי כולל?</h2>
+    <h2>מה כולל כלי קודש?</h2>
     <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col"><div class="card h-100 shadow-sm"><div class="card-body">המרת טקסטים תורניים לניקוד תקני</div></div></div>
-      <div class="col"><div class="card h-100 shadow-sm"><div class="card-body">קיצורים תורניים ואוטומציה</div></div></div>
-      <div class="col"><div class="card h-100 shadow-sm"><div class="card-body">בדיקת מבנה מסמכים לפי מקורות</div></div></div>
-      <div class="col"><div class="card h-100 shadow-sm"><div class="card-body">תמיכה מלאה ב-RTL ופורמטים תורניים</div></div></div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">ניקוד אוטומטי</h5>
+            <p class="card-text">המרה מדויקת של טקסטים תורניים לניקוד תקני לפי כללי הלשון.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">קיצורים ואוטומציות</h5>
+            <p class="card-text">הכנסת ראשי תיבות, סימני ספרים, ומבני פסקאות בלחיצת כפתור.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">בדיקת מקורות</h5>
+            <p class="card-text">איתור והתראה על מקורות לא תקניים במסמכים תורניים.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">תמיכה מלאה ב-RTL</h5>
+            <p class="card-text">התאמה מלאה למסמכים מימין לשמאל ולפורמטים מקובלים בכתיבה תורנית.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- יומן עדכונים -->
   <section id="updates" class="mt-5">
-    <h2 class="mb-3">יומן עדכונים</h2>
+    <h2>יומן עדכונים</h2>
     <div class="timeline-item">
       <strong>14/05/2025:</strong> הושקה גרסה 1.0 🎉  
-      <p>כוללת את הבסיס, התקנה ל-Windows, ממשק עברי וכלים ראשוניים.</p>
+      <p>כוללת התקנה ל-Windows, ממשק עברי מלא, וכלי יסוד לעריכה תורנית.</p>
     </div>
     <!-- ניתן להוסיף עדכונים נוספים כאן -->
   </section>
@@ -66,13 +126,13 @@
   <!-- צור קשר -->
   <section id="contact" class="mt-5">
     <h2>צור קשר</h2>
-   <form action="https://formspree.io/f/xpwdkgve"  method="POST"  enctype="multipart/form-data">
+    <form action="https://formspree.io/f/xpwdkgve" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="name" class="form-label">שם</label>
         <input type="text" name="name" class="form-control" id="name" required>
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label">דוא״ל</label>
+        <label for="email" class="form-label">דוא"ל</label>
         <input type="email" name="email" class="form-control" id="email" required>
       </div>
       <div class="mb-3">
@@ -80,8 +140,9 @@
         <textarea name="message" class="form-control" id="message" rows="4" required></textarea>
       </div>
       <button type="submit" class="btn btn-success">שלח</button>
-</form>
+    </form>
   </section>
+
 </main>
 
 <!-- תחתית -->
