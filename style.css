@@ -11,6 +11,13 @@ header img {
   height: 80px;
   margin-bottom: 1rem;
 }
+.logo {
+  height: 40px; /* Adjust to fit your navbar height */
+  width: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
 .timeline-item {
   border-right: 4px solid #8b2e24;
   background: white;
