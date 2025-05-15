@@ -8,7 +8,8 @@ header {
   text-align: center;
 }
 header img {
-  margin-left: 15px;
+  margin-left: 10px;
+   margin-right: 10px;
   height: 80px;
   margin-bottom: 1rem;
 }
