@@ -63,19 +63,19 @@
   <section id="contact" class="mt-5">
     <h2>צור קשר</h2>
    <form action="https://formspree.io/f/xpwdkgve"  method="POST"  enctype="multipart/form-data">
-  <label>
-    דוא״ל:
-    <input type="email" name="email">
-  </label>
-     <label>
-    הודעה:
-    <textarea name="message"></textarea>
-  </label>
-  <label>
-    קבצים מצורפים:
-    <input type="file" name="upload">
-  </label>
-  <button type="submit">Send</button>
+      <div class="mb-3">
+        <label for="name" class="form-label">שם</label>
+        <input type="text" name="name" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">דוא״ל</label>
+        <input type="email" name="email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">הודעה</label>
+        <textarea name="message" class="form-control" id="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">שלח</button>
 </form>
   </section>
 </main>
