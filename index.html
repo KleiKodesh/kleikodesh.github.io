@@ -1,53 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My App</title>
+  <title>כלי קודש - עורך תורני</title>
   <style>
     body {
       font-family: sans-serif;
+      background: #f5f5f5;
       margin: 0;
-      padding: 0;
-      text-align: center;
-      background: #f7f9fc;
+      direction: rtl;
     }
     header {
-      background: #2c3e50;
+      background: #8b2e24;
       color: white;
-      padding: 2rem 1rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    header img {
+      height: 80px;
+      margin-bottom: 1rem;
     }
     main {
       padding: 2rem;
+      max-width: 800px;
+      margin: auto;
     }
-    a.button {
+    .download {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
       background: #3498db;
       color: white;
-      border-radius: 5px;
+      padding: 1rem 2rem;
+      border-radius: 8px;
       text-decoration: none;
+      margin-top: 1rem;
+    }
+    .timeline {
+      margin-top: 3rem;
+    }
+    .timeline-item {
+      background: white;
+      border-right: 5px solid #8b2e24;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      box-shadow: 0 0 4px rgba(0,0,0,0.1);
     }
     footer {
-      background: #ecf0f1;
+      text-align: center;
       padding: 1rem;
+      color: #666;
       font-size: 0.9rem;
-      color: #555;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
     }
   </style>
 </head>
 <body>
+
+  <div class="lang-switch">
+    <a href="?lang=en">English</a> | <strong>עברית</strong>
+  </div>
+
   <header>
-    <h1>Welcome to My App</h1>
-    <p>Deployed with GitHub Pages 🚀</p>
+    <img src="Klei_Kodesh.png" alt="אייקון כלי קודש" />
+    <h1>כלי קודש - עורך תורני ל-Word</h1>
+    <p>תוסף מתקדם לעריכה תורנית בתוך Microsoft Word. כולל כלים לבדיקות תחביר, ניקוד, קיצורים תורניים ועוד.</p>
+    <a href="InstallerUrlHere.exe" class="download" download>📥 הורד את ההתקנה</a>
   </header>
+
   <main>
-    <p>This is a placeholder for your app.</p>
-    <a href="#" class="button">Get Started</a>
+    <h2>מה הכלי כולל?</h2>
+    <ul>
+      <li>המרת טקסטים תורניים לניקוד תקני</li>
+      <li>כלי קיצורים תורניים ואוטומציה</li>
+      <li>בדיקת מבנה מסמכים לפי מקורות</li>
+      <li>תמיכה מלאה ב-RTL ובפורמטים תורניים</li>
+    </ul>
+
+    <div class="timeline">
+      <h2>יומן עדכונים</h2>
+      <div class="timeline-item">
+        <strong>14/05/2025:</strong> הושקה גרסה 1.0 🎉  
+        <p>כוללת את הבסיס, התקנה ל-Windows, ממשק עברי וכלים ראשוניים.</p>
+      </div>
+      <!-- עדכונים נוספים ייכנסו כאן -->
+    </div>
   </main>
+
   <footer>
-    &copy; 2025 Your Name or Company
+    &copy; 2025 כלי קודש - כל הזכויות שמורות
   </footer>
+
 </body>
 </html>
