@@ -30,6 +30,19 @@ header img {
   box-shadow: 0 0 4px rgba(0,0,0,0.05);
   margin-bottom: 1rem;
 }
+.scrolling-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+
+.scrolling-gallery .card {
+  min-width: 250px;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
 footer {
   text-align: center;
   padding: 1rem;
