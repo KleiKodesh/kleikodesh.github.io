@@ -20,12 +20,7 @@ header img {
   vertical-align: middle;
 }
 .download-box {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 16px;
-      padding: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 .timeline-item {
   border-right: 4px solid #8b2e24;
