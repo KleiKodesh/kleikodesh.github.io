@@ -120,23 +120,42 @@
 
   <!-- גלריית תמונות -->
 <section id="images" class="mt-5">
-  <h2 class="mb-4">גלריית תמונות</h2>
-  <div class="scrolling-gallery">
-    <div class="card shadow-sm">
-      <img src="images/דרך-האתרים-1.png" class="card-img-top" alt="תמונה 1">
+  <h2 class="mb-4 text-center">גלריית תמונות</h2>
+
+  <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="תמונה 1"></button>
+      <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1" aria-label="תמונה 2"></button>
+      <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="2" aria-label="תמונה 3"></button>
+      <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="3" aria-label="תמונה 4"></button>
     </div>
-    <div class="card shadow-sm">
-      <img src="images/דרך-האתרים-2.png" class="card-img-top" alt="תמונה 2">
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/דרך-האתרים-1.png" class="d-block w-100" alt="תמונה 1">
+      </div>
+      <div class="carousel-item">
+        <img src="images/דרך-האתרים-2.png" class="d-block w-100" alt="תמונה 2">
+      </div>
+      <div class="carousel-item">
+        <img src="images/היברו-בוקס-1.png" class="d-block w-100" alt="תמונה 3">
+      </div>
+      <div class="carousel-item">
+        <img src="images/היברו-בוקס-2.png" class="d-block w-100" alt="תמונה 4">
+      </div>
     </div>
-    <div class="card shadow-sm">
-      <img src="images/היברו-בוקס-1.png" class="card-img-top" alt="תמונה 3">
-    </div>
-    <div class="card shadow-sm">
-      <img src="images/היברו-בוקס-2.png" class="card-img-top" alt="תמונה 4">
-    </div>
-    <!-- הוסף עוד תמונות כאן -->
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">הקודם</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">הבא</span>
+    </button>
   </div>
 </section>
+
 
   
 <!-- דיווח באגים ובקשת פיצ'רים -->
