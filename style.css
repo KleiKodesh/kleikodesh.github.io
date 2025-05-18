@@ -4,11 +4,11 @@ body {
   background-color: #f4f6f8;
   font-family: 'Assistant', sans-serif;
 }
+
 header {
   background-color: #7332ff; /* Deeper, more vivid indigo */
   color: white;
   padding: 2rem 1rem;
-  text-align: center;
 }
 
 header img {
@@ -23,9 +23,26 @@ header img {
   margin-right: 8px;
   vertical-align: middle;
 }
+
 .download-box {
       margin-bottom: 20px;
     }
+
+     .custom-btn {
+    background-color: #5047e5; /* green */
+    border-color: #5047e5;
+    color: white;
+  }
+
+  i {
+    margin: 2;
+  }
+  .custom-btn:hover {
+    background-color: #6747e5;
+    border-color: #6747e5;
+  }
+
+
 .timeline-item {
   border-right: 4px solid #8b2e24;
   background: white;
