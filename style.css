@@ -35,8 +35,9 @@ header img {
   }
 
   i {
-    margin: 2;
-  }
+  margin-left: 0.5rem;
+}
+
   .custom-btn:hover {
     background-color: #6747e5;
     border-color: #6747e5;
