@@ -5,11 +5,12 @@ body {
   font-family: 'Assistant', sans-serif;
 }
 header {
-  background-color: #8b2e24;
+  background-color: #7332ff; /* Deeper, more vivid indigo */
   color: white;
   padding: 2rem 1rem;
   text-align: center;
 }
+
 header img {
   margin-left: 10px;
    margin-right: 10px;
