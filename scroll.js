@@ -16,3 +16,12 @@ document.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
     }
   });
 });
+
+  function scrollGallery(direction) {
+    const wrapper = document.getElementById('scrolling-wrapper');
+    const scrollAmount = 220; // adjust as needed
+    wrapper.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }

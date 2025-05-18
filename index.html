@@ -13,6 +13,7 @@
   <title>כלי קודש לוורד - ארגז כלים לעורך התורני</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Imagegallery.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="Klei_Kodesh-Logo.png" type="image/x-icon">
 </head>
@@ -136,9 +137,9 @@
 
 </div>
   <!-- תכונות -->
-  <section id="features" class="container my-5 text-center">
+  <section id="features" class="my-5 text-center">
     <h2 class="mb-4">
-      מה התוסף כלי קודש כולל?
+      <i class="fas fa-puzzle-piece"></i> מה התוסף כלי קודש כולל
     </h2>
     <div class="row row-cols-1 row-cols-md-2 g-4">
   <div class="col">
@@ -187,32 +188,41 @@
  <!-- </section>-->
 
   <!-- גלריית תמונות -->
-<section id="images" class="mt-5 text-center">
-  <h2 class="mb-4">גלריית תמונות</h2>
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="images/דרך-האתרים-1.png" class="card-img-top" alt="תמונה 1">
-      </div>
+<section id="images" class="container mt-5 text-center position-relative image-gallery">
+
+  <h2 class="mb-3">
+    <i class="fas fa-image"></i> גלריית תמונות
+  </h2>
+  
+  <!-- Scroll buttons -->
+  <button class="scroll-btn left" onclick="scrollGallery(-1)">&#10095;</button>
+  <button class="scroll-btn right" onclick="scrollGallery(1)">&#10094;</button>
+
+  <div class="scrolling-wrapper" id="scrolling-wrapper">
+    <div class="card">
+      <img src="images/דרך-האתרים-1.png" class="card-img-top" alt="...">
     </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="images/דרך-האתרים-2.png" class="card-img-top" alt="תמונה 2">
-      </div>
+    <div class="card">
+      <img src="images/דרך-האתרים-2.png" class="card-img-top" alt="...">
     </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="images/היברו-בוקס-1.png" class="card-img-top" alt="תמונה 3">
-      </div>
+    <div class="card">
+      <img src="images/היברו-בוקס-1.png" class="card-img-top" alt="...">
     </div>
-     <div class="col">
-      <div class="card shadow-sm">
-        <img src="images/היברו-בוקס-2.png" class="card-img-top" alt="תמונה 3">
-      </div>
+    <div class="card">
+      <img src="images/היברו-בוקס-2.png" class="card-img-top" alt="...">
     </div>
-    <!-- הוסף תמונות נוספות כאן לפי הצורך -->
+     <div class="card">
+      <img src="images/רגקס-בוורד-3.png" class="card-img-top" alt="...">
+    </div>
+     <div class="card">
+      <img src="images/רגקס-בוורד-1.png" class="card-img-top" alt="...">
+    </div>
+     <div class="card">
+      <img src="images/רגקס-בוורד-2.png" class="card-img-top" alt="...">
+    </div>
   </div>
 </section>
+
 </main>
 
 
