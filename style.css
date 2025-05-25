@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap');
+  
+  .link-hover :hover {
+      color: #6e5494; /* Change to GitHub purple on hover */
+  }
+
+  .custom-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
 
 body {
   background-color: #f4f6f8;
