@@ -4,25 +4,24 @@
   opacity:0.5;
   transition: opacity 0.7s ease-in-out;
   padding: 3rem 0;
-  border-radius: 0.5rem; /* Matches Bootstrap's .rounded */
+  border-radius: 0.5rem;
 }
 
-.image-gallery:hover
-{
-    opacity: 1;
+.image-gallery:hover {
+  opacity: 1;
 }
 
 .scrolling-wrapper {
   overflow-x: auto;
   white-space: nowrap;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   scroll-behavior: smooth;
   position: relative;
 }
 
 .scrolling-wrapper::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;
 }
 
 .scrolling-wrapper .card {
@@ -54,7 +53,7 @@
   left: 0;
   opacity: 0.2;
   background: transparent;
-  border-radius: 8px; /* You can adjust the value as needed */
+  border-radius: 8px;
 }
 
 .scroll-btn.right {
