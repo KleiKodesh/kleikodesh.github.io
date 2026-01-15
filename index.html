@@ -1,332 +1,329 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta name="google-site-verification" content="sUDWxQ8x6xdU0XM2b8lgMmjTtvHYZyXC2PnNzwl6C9c" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Bilingual Meta Tags -->
-<meta name="description" content="כלי קודש לוורד - ארגז כלים לעורך התורני עם תוספים, מדריכים וגישה נוחה לספרים תורניים. | Klei Kodesh for Word - A toolbox for Torah editors including plugins, guides, and access to Torah literature." />
-<meta name="keywords" content="כלי קודש, וורד, תוספים, היברו בוקס, אוצר ספרים, אוצרניק, אוצריא, חיפוש רגולרי, רגקס, רגקס בוורד, כלי קודש לוורד, פרוייקט כלי קודש, עיצוב תורני, טיפים, עבודה נכונה בוורד, חיפוש בוורד, תווים כלליים, עורך תורני, hebrew books, Klei Kodesh, Klei kodesh project, Word plugins, word addin, word taskpane, flexibale search, msword, Otzaria, Otzarnik, Torah editor, regex search, regex in word, Judaica tools, Word add-ons, vsto" />
-<meta name="author" content="פרויקט כלי קודש | Klei Kodesh Project" />
-
-  <title>כלי קודש לוורד - ארגז כלים לעורך התורני</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="Imagegallery.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="Klei_Kodesh-Logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="כלי קודש לוורד - ארגז כלים לעורך התורני עם תוספים, מדריכים וגישה נוחה לספרים תורניים. | Klei Kodesh for Word - A toolbox for Torah editors including plugins, guides, and access to Torah literature.">
+    <meta name="keywords" content="כלי קודש, וורד, תוספים, זית, אוצריא, חיפוש רגולרי, רגקס, עיצוב תורני, עורך תורני, Klei Kodesh, Word plugins, VSTO, Torah editor, regex search, Judaica tools">
+    <meta name="author" content="פרויקט כלי קודש | Klei Kodesh Project">
+    <title>כלי קודש לוורד - ארגז כלים לעורך התורני</title>
+    <link rel="icon" href="Klei_Kodesh-Logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="photoswipe.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="https://github.com/KleiKodesh?tab=repositories" target="_blank" 
+                   class="nav-icon-link" title="למעבר לגיט האב של הפרוייקט" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1UcAlBJU1nW-uzG8J8DLgETIEnMNhsV3O?usp=sharing" 
+                   target="_blank" class="nav-icon-link" title="למעבר לגוגל דרייב של הפרוייקט" aria-label="Google Drive">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.71,3.5L1.15,15L4.58,21L11.13,9.5M9.73,15L6.3,21H19.42L22.85,15M22.28,14L15.42,2H8.58L8.57,2L15.43,14H22.28Z"/>
+                    </svg>
+                </a>
+                <a href="https://mitmachim.top/post/966405" 
+                   target="_blank" class="nav-icon-link" title="למעבר לפוסט במתמחים" aria-label="Mitmachim">
+                    <img src="mitmachim-favicon.ico" width="20" height="20" alt="Mitmachim">
+                </a>
+                <a href="#" class="brand-text" title="לחץ לחזרה לתחילת העמוד">פרוייקט כלי קודש לוורד</a>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-toggle" id="navToggle" aria-label="תפריט ניווט">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#features" class="nav-link">מה התוסף כולל</a></li>
+                <li><a href="#downloads" class="nav-link">הורדות נוספות</a></li>
+                <li><a href="#" class="nav-link" id="openGallery">תמונות</a></li>
+                <li><a href="#contact" class="nav-link">צור קשר</a></li>
+                <li>
+                    <button class="theme-toggle nav-link" id="themeToggle" title="החלף ערכת נושא" aria-label="החלף ערכת נושא">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m0-1.5v-17a8.5 8.5 0 0 1 0 17"/>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- סרגל ניווט -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-  <div class="container-fluid px-2">
-      <a class="navbar-brand link-hover" href="https://github.com/KleiKodesh?tab=repositories" target="_blank"
-      title="למעבר לגיט האב של הפרוייקט">
-          <i class="fab fa-github"></i>
-      </a>
-        <a href="https://drive.google.com/drive/folders/1UcAlBJU1nW-uzG8J8DLgETIEnMNhsV3O?usp=sharing" target="_blank" 
-     class="github-link"
-     title="למעבר לגוגל דרייב של הפרוייקט">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
-    <path d="M7.71,3.5L1.15,15L4.58,21L11.13,9.5M9.73,15L6.3,21H19.42L22.85,15M22.28,14L15.42,2H8.58L8.57,2L15.43,14H22.28Z"/>
-  </svg>
-</a>
-      <a class="navbar-brand link-hover" href="#"  title="לחץ לחזרה לתחילת העמוד">
-          פרוייקט כלי קודש
-      </a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#features"><i class="fas fa-puzzle-piece"></i> מה התוסף כולל</a></li>
-        <li class="nav-item"><a class="nav-link" href="#downloads"><i class="fas fa-download"></i> הורדות נוספות</a></li>
-        <!--<li class="nav-item"><a class="nav-link" href="#updates"><i class="fas fa-calendar-alt"></i> יומן עדכונים</a></li>-->
-        <li class="nav-item"><a class="nav-link" href="#images"><i class="fas fa-image"></i> תמונות</a></li>
-        <!-- <li class="nav-item"><a class="nav-link" href="#newsletter"><i class="fas fa-envelope"></i> הרשמה לקבלת עדכונים</a></li> -->
-        <li class="nav-item"><a class="nav-link"  href="#newsletter"><i class="fas fa-comment-dots"></i> צור קשר</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- כותרת -->
-<div class="card h-100 text-center rounded-0">
-  <header class="shadow-sm"
-    style="border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;">
-      <div class="container text-center py-4">
-        <img src="Klei_Kodesh.png" alt="Klei Kodesh Logo" class="ico="icon" />
-        <h1 id="title" class="display-5">כלי קודש לוורד</h1>
-        <h4 class="lead">ארגז כלים לעורך התורני</h4>
-      </div>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <img src="Klei_Kodesh.png" alt="Klei Kodesh Logo" class="hero-logo">
+            <h1 class="hero-title">כלי קודש לוורד</h1>
+            <p class="hero-subtitle">ארגז כלים לעורך התורני</p>
+            <div class="hero-actions">
+                <a href="https://github.com/KleiKodesh/KleiKodesh/releases/latest" 
+                   class="btn btn-primary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                    הורד את ההתקנה כעת
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPw8cwUTSSH4bQkvIVaX_Cv1M2pdn53pJE16o9VFb0oW0gkg/viewform" 
+                   class="btn btn-secondary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    הירשם לקבלת עדכונים
+                </a>
+                <a href="https://github.com/KleiKodesh/KleiKodesh/issues" 
+                   class="btn btn-outline" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    דיווח באגים ובקשות
+                </a>
+            </div>
+        </div>
     </header>
- 
-<div class="card-body" style="color: rgb(6, 6, 59);">
-  <a href="https://github.com/KleiKodesh/KleiKodesh/releases/latest" 
-     class="btn btn-primary btn-lg mt-3 custom-btn" target="_blank"
-     style="margin: 2px;">
-  <i class="fas fa-download"></i> הורד את ההתקנה כעת 
-  </a>
-<!-- <a class="btn btn-primary btn-lg mt-3 custom-btn" href="#newsletter"
-   style="margin: 2px;">
-  <i class="fas fa-envelope"></i> הרשם לקבלת עדכונים 
-</a> -->
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPw8cwUTSSH4bQkvIVaX_Cv1M2pdn53pJE16o9VFb0oW0gkg/viewform" 
-       class="btn btn-primary btn-lg mt-3 custom-btn" target="_blank"
-       style="margin: 2px;"> 
-       <i class="fas fa-envelope"></i> הירשם לקבלת עדכונים
-    </a>  
-</div>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <h2 class="section-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                מה התוסף כולל
+            </h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">זית - ספרייה תורנית</h3>
+                    <p class="feature-description">גישה מלאה למאגר הספרים של זית בתוך וורד, עם ממשק קופמפקטי ונוח</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">חיפוש רגקס בוורד</h3>
+                    <p class="feature-description">חיפוש והחלפה עם ביטויים רגולריים מעבר ליכולות החיפוש המתקדם של וורד</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">עיצוב תורני</h3>
+                    <p class="feature-description">כלים לעיצוב מסמכים כפי שמקובל בספרי קודש</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">דרך האתרים</h3>
+                    <p class="feature-description">גישה נוחה לאתרים תורניים ישירות מתוך וורד</p>
+                </div>
+            </div>
+        </section>
 
-  </div>
-  
-<!-- תוכן -->
-<main class="container my-5">
-   
-   <!-- תכונות -->
-  <section id="features" class="my-5 text-center">
-    <h2 class="mb-4">
-      <i class="fas fa-puzzle-piece"></i> מה התוסף כולל
-    </h2>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <i class="fas fa-book-open me-2"></i> היברובוקס בוורד - גישה נוחה לספרי היברו בוקס בתוך וורד
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <i class="fas fa-globe me-2"></i> דרך האתרים - גישה נוחה לאתרים תורניים
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <i class="fas fa-book-open me-2"></i> אוצרניק גישה למאגר הספרים של אוצריא בתוך וורד
-      </div>
-    </div>
-  </div> 
-   <div class="col">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <i class="fas fa-scroll  me-2"></i> עיצוב תורני כפי שמקובל בספרי קודש
-      </div>
-    </div>
-  </div> 
-</div>
+        <!-- Downloads Section -->
+        <section id="downloads" class="section">
+            <h2 class="section-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                </svg>
+                הורדות נוספות
+            </h2>
+            <div class="downloads-grid">
+                <div class="download-card">
+                    <h3 class="download-title">טיפים לעבודה נכונה בוורד</h3>
+                    <a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" 
+                       class="btn btn-primary" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        הורד כעת
+                    </a>
+                </div>
+                <div class="download-card">
+                    <h3 class="download-title">מדריך חיפוש והחלפה בוורד</h3>
+                    <a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" 
+                       class="btn btn-primary" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        הורד כעת
+                    </a>
+                </div>
+                <div class="download-card">
+                    <h3 class="download-title">תוסף עיצוב תורני לוורד</h3>
+                    <a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" 
+                       class="btn btn-primary" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        הורד כעת
+                    </a>
+                </div>
+            </div>
+        </section>
 
-  </section>
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="contact-card">
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                    צור קשר
+                </h2>
+                <form action="https://formspree.io/f/mnndrdyq" method="POST" class="contact-form">
+                    <input type="hidden" name="_language" value="he">
+                    <div class="form-group">
+                        <label for="name" class="form-label">שם</label>
+                        <input type="text" name="name" id="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">דוא״ל</label>
+                        <input type="email" name="email" id="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">הודעה</label>
+                        <textarea name="message" id="message" class="form-textarea" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                        שלח
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
 
-   <!-- הורדות -->
-<section id="downloads">
-  <h2 class="mb-4 text-center"><i class="fas fa-download"></i> הורדות נוספות</h2>
-  
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <!-- כרטיס 1 -->
-    <div class="col">
-      <div class="card h-100 text-center shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class="fas fa-file-word me-2 text-primary"></i> טיפים לעבודה נכונה בוורד
-          </h5>
-          <a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" class="btn btn-primary custom-btn" target="_blank">
-            <i class="fas fa-download"></i> הורד כעת
-          </a>
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a href="mailto:kleikodeshproject@gmail.com">kleikodeshproject@gmail.com</a>
+        </p>
+    </footer>
+
+    <!-- Gallery Modal (Hidden - only for PhotoSwipe) -->
+    <div class="gallery-modal" id="galleryModal" style="display: none;">
+        <div class="pswp-gallery gallery-grid" id="gallery">
+            <a href="images/כזית.png">
+                <img src="images/כזית.png" alt="זית - ספריית אוצריא" class="gallery-thumbnail">
+            </a>
+            <a href="images/דרך-האתרים-2.png">
+                <img src="images/דרך-האתרים-2.png" alt="דרך האתרים - דפדפן" class="gallery-thumbnail">
+            </a>
+            <a href="images/דרך-האתרים-1.png">
+                <img src="images/דרך-האתרים-1.png" alt="דרך האתרים" class="gallery-thumbnail">
+            </a>   
+            <a href="images/DocSefer.png">
+                <img src="images/DocSefer.png" alt="עיצוב תורני" class="gallery-thumbnail">
+            </a>       
+            <a href="images/רגקס-בוורד-3.png">
+                <img src="images/רגקס-בוורד-3.png" alt="חיפוש רגקס - החלפה" class="gallery-thumbnail">
+            </a>
         </div>
-      </div>
     </div>
 
-    <!-- כרטיס 2 -->
-    <div class="col">
-      <div class="card h-100 text-center shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class="fas fa-file-word me-2 text-primary"></i> מדריך חיפוש והחלפה בוורד
-          </h5>
-          <a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" class="btn btn-primary custom-btn" target="_blank">
-            <i class="fas fa-download"></i> הורד כעת
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- כרטיס 3 -->
-    <div class="col">
-      <div class="card h-100 text-center shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class="fas fa-puzzle-piece me-2 text-primary"></i> תוסף עיצוב תורני לוורד
-          </h5>
-          <a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" class="btn btn-primary custom-btn" target="_blank">
-            <i class="fas fa-download"></i> הורד כעת
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card h-100 text-center shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class="fas fa-puzzle-piece me-2 text-primary"></i> חיפוש רגקס בוורד
-          </h5>
-          <a href="https://github.com/pcinfogmach/RegexInWordpublish/releases/latest" 
-          class="btn btn-primary custom-btn" target="_blank">
-            <i class="fas fa-download"></i> הורד כעת
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card h-100 text-center shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class="fas fa-book-open me-2 text-primary"></i>היברו בוקס (HebrewBooks) למחשב
-          </h5>
-          <a href="https://github.com/KleiKodesh/HebrewBooksLib/releases/latest" class="btn btn-primary custom-btn" target="_blank">
-            <i class="fas fa-download"></i> הורד כעת
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  
-  <!-- יומן עדכונים -->
-  <!--
-  <section id="updates" class="mt-5">
-    <h2 class="mb-3">יומן עדכונים</h2>
-    <div class="timeline-item">
-      <strong>14/05/2025:</strong> הושקה גרסה 1.0 🎉  
-      <p>כוללת את הבסיס, התקנה ל-Windows, ממשק עברי וכלים ראשוניים.</p>
-    </div>
-  -->
-    <!-- ניתן להוסיף עדכונים נוספים כאן -->
- <!-- </section>-->
-
-  <!-- גלריית תמונות -->
-<section id="images" class="container mt-5 text-center position-relative image-gallery">
-
-  <h2 class="mb-3">
-    <i class="fas fa-image"></i> גלריית תמונות
-  </h2>
-  
-  <!-- Scroll buttons -->
-  <button class="scroll-btn left" onclick="scrollGallery(-1)">&#10095;</button>
-  <button class="scroll-btn right" onclick="scrollGallery(1)">&#10094;</button>
-
-  <div class="scrolling-wrapper" id="scrolling-wrapper">
-     <div class="card">
-      <img src="images/אוצרניק-1.png" class="card-img-top" alt="...">
-    </div>
-     <div class="card">
-      <img src="images/אוצרניק-2.png" class="card-img-top" alt="...">
-    </div>
-    <div class="card">
-      <img src="images/דרך-האתרים-1.png" class="card-img-top" alt="...">
-    </div>
-    <div class="card">
-      <img src="images/דרך-האתרים-2.png" class="card-img-top" alt="...">
-    </div>
-    <div class="card">
-      <img src="images/היברו-בוקס-1.png" class="card-img-top" alt="...">
-    </div>
-    <div class="card">
-      <img src="images/היברו-בוקס-2.png" class="card-img-top" alt="...">
-    </div>
-     <div class="card">
-      <img src="images/רגקס-בוורד-3.png" class="card-img-top" alt="...">
-    </div>
-     <div class="card">
-      <img src="images/רגקס-בוורד-1.png" class="card-img-top" alt="...">
-    </div>
-     <div class="card">
-      <img src="images/רגקס-בוורד-2.png" class="card-img-top" alt="...">
-    </div>
-    <div class="card">
-      <img src="images/DocSefer.png" class="card-img-top" alt="...">
-    </div>
-  </div>
-</section>
-
-</main>
-
-
-<!-- תחתית -->
-<footer class="text-end">
-         <!-- הרשמה לעדכונים -->
-<section class="container my-5" id="newsletter">
-  <h2 class="mb-3">
-    <i class="fas fa-bell"></i> רוצה לקבל עדכונים על גרסאות חדשות?
-  </h2>
-  <p style="font-size: 110%;">
-    השאר את כתובת הדוא"ל שלך ותקבל מאיתנו הודעה כשיש מהדורה חדשה או תוספות מעניינות.
-  </p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPw8cwUTSSH4bQkvIVaX_Cv1M2pdn53pJE16o9VFb0oW0gkg/viewform" 
-       class="btn btn-primary custom-btn" target="_blank"
-       style="margin: 2px;"> 
-       <i class="fas fa-envelope"></i> הירשם לקבלת עדכונים
-    </a>  
-  </form>
-</section>
-  
-<!-- דיווח באגים ובקשת פיצ'רים -->
-<section class="container my-5" id="github-feedback">
-  <h2 class="mb-4">
-    <i class="fas fa-bug"></i> דיווח באגים ובקשת פיצ'רים
-  </h2>
-  <p style="font-size: 110%;">
-    נשמח אם תעזרו לנו לשפר את כלי קודש! ניתן לדווח על תקלות או להציע פיצ'רים חדשים דרך דף הפרויקט ב-GitHub.
-  </p>
-
-  <a href="https://github.com/pcinfogmach/KleiKodesh2/issues" class="btn btn-outline-primary custom-btn" target="_blank">
-<i class="fab fa-github"></i> מעבר לדף הדיווחים ב-GitHub
-  </a>
-</section>
-
-     <!-- צור קשר -->
- <section class="container my-5" id="contact" dir="rtl">
-  <h2>
-    <i class="fas fa-comment-dots"></i> צור קשר
-  </h2>
-  <form action="https://formspree.io/f/mnndrdyq" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_language" value="he" />
-    <div class="mb-3">
-      <label for="name" class="form-label">שם</label>
-      <input type="text" name="name" class="form-control" id="name" required>
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">דוא״ל</label>
-      <input type="email" name="email" class="form-control" id="email" required>
-    </div>
-    <div class="mb-3">
-      <label for="message" class="form-label">הודעה</label>
-      <textarea name="message" class="form-control" id="message" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-success custom-btn">
-      <i class="fas fa-paper-plane"></i> שלח
-    </button>
-  </form>
-</section>
-  
- <p class="text-center m-0">
-  &copy; כלי קודש - כל הזכויות שמורות
-</p>
-
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="scroll.js"></script>
-
+    <script src="script.js"></script>
+    <script type="module">
+        import PhotoSwipeLightbox from './photoswipe-lightbox.esm.js';
+        
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#gallery',
+            children: 'a',
+            pswpModule: () => import('./photoswipe.esm.js'),
+            preload: [1, 1]
+        });
+        
+        // Auto-detect image dimensions before opening
+        lightbox.addFilter('itemData', (itemData, index) => {
+            const img = itemData.element.querySelector('img');
+            
+            // Create a temporary image to get actual dimensions
+            const tempImg = new Image();
+            tempImg.src = itemData.src;
+            
+            // Use natural dimensions if available (image already loaded)
+            if (img.naturalWidth && img.naturalHeight) {
+                itemData.width = img.naturalWidth;
+                itemData.height = img.naturalHeight;
+            } else {
+                // Set placeholder dimensions that will be updated when image loads
+                itemData.width = 1920;
+                itemData.height = 1080;
+                
+                // Update dimensions when image loads
+                tempImg.onload = function() {
+                    itemData.width = this.naturalWidth;
+                    itemData.height = this.naturalHeight;
+                };
+            }
+            
+            return itemData;
+        });
+        
+        // Add custom caption
+        lightbox.on('uiRegister', function() {
+            lightbox.pswp.ui.registerElement({
+                name: 'custom-caption',
+                order: 9,
+                isButton: false,
+                appendTo: 'root',
+                html: 'Caption text',
+                onInit: (el, pswp) => {
+                    lightbox.pswp.on('change', () => {
+                        const currSlideElement = lightbox.pswp.currSlide.data.element;
+                        let captionHTML = '';
+                        if (currSlideElement) {
+                            const img = currSlideElement.querySelector('img');
+                            if (img) {
+                                captionHTML = img.getAttribute('alt');
+                            }
+                        }
+                        el.innerHTML = captionHTML || '';
+                    });
+                }
+            });
+        });
+        
+        lightbox.init();
+    </script>
 </body>
 </html>
