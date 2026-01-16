@@ -88,6 +88,11 @@ html {
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
     font-family: 'Segoe UI', 'Rubik', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -530,6 +535,35 @@ body {
     font-size: 14px;
 }
 
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.footer-text {
+    margin: var(--spacing-md) 0;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.footer-text a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
 .footer p {
     margin: var(--spacing-sm) 0;
 }
@@ -539,7 +573,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-lg);
 }
 
 .footer-email a {

@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="photoswipe.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lightbox.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -147,7 +147,7 @@
                         </svg>
                     </div>
                     <h3 class="feature-title">דרך האתרים</h3>
-                    <p class="feature-description">גישה נוחה לאתרים תורניים ישירות מתוך וורד</p>
+                    <p class="feature-description">גישה נוחה לאתרים תורניים ישירות מתוך וורד, כגון: נקדנית דיקטה, אוצר החכמה המקוון ועוד</p>
                 </div>
             </div>
         </section>
@@ -231,99 +231,41 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p class="footer-email">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            <a href="mailto:kleikodeshproject@gmail.com">kleikodeshproject@gmail.com</a>
-        </p>
+        <div class="footer-content">
+            <p class="footer-text">
+                התוסף הוא חינמי לחלוטין ומופץ תחת רישיון קוד פתוח. אתם מוזמנים להפיץ, לשתף ולהשתמש בתוסף ללא כל עלות. 
+                הקוד המלא זמין ב-<a href="https://github.com/KleiKodesh" target="_blank">GitHub</a> ואתם מוזמנים לתרום, לדווח על באגים ולהציע שיפורים.
+            </p>
+            <p class="footer-email">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <a href="mailto:kleikodeshproject@gmail.com">kleikodeshproject@gmail.com</a>
+            </p>
+        </div>
     </footer>
 
-    <!-- Gallery Modal (Hidden - only for PhotoSwipe) -->
-    <div class="gallery-modal" id="galleryModal" style="display: none;">
-        <div class="pswp-gallery gallery-grid" id="gallery">
-            <a href="images/zayit.png">
-                <img src="images/zayit.png" alt="זית - ספריית אוצריא" class="gallery-thumbnail">
-            </a>
-            <a href="images/websites-2.png">
-                <img src="images/websites-2.png" alt="דרך האתרים - דפדפן" class="gallery-thumbnail">
-            </a>
-            <a href="images/websites-1.png">
-                <img src="images/websites-1.png" alt="דרך האתרים" class="gallery-thumbnail">
-            </a>   
-            <a href="images/DocSefer.png">
-                <img src="images/DocSefer.png" alt="עיצוב תורני" class="gallery-thumbnail">
-            </a>       
-            <a href="images/regex-3.png">
-                <img src="images/regex-3.png" alt="חיפוש רגקס - החלפה" class="gallery-thumbnail">
-            </a>
-        </div>
+    <!-- Gallery (Hidden) -->
+    <div id="gallery" style="display: none;">
+        <a href="images/zayit.png">
+            <img src="images/zayit.png" alt="זית - ספריית אוצריא">
+        </a>
+        <a href="images/websites-2.png">
+            <img src="images/websites-2.png" alt="דרך האתרים - דפדפן">
+        </a>
+        <a href="images/websites-1.png">
+            <img src="images/websites-1.png" alt="דרך האתרים">
+        </a>   
+        <a href="images/DocSefer.png">
+            <img src="images/DocSefer.png" alt="עיצוב תורני">
+        </a>       
+        <a href="images/regex-3.png">
+            <img src="images/regex-3.png" alt="חיפוש רגקס - החלפה">
+        </a>
     </div>
 
     <script src="script.js"></script>
-    <script type="module">
-        import PhotoSwipeLightbox from './photoswipe-lightbox.esm.js';
-        
-        const lightbox = new PhotoSwipeLightbox({
-            gallery: '#gallery',
-            children: 'a',
-            pswpModule: () => import('./photoswipe.esm.js'),
-            preload: [1, 1]
-        });
-        
-        // Auto-detect image dimensions before opening
-        lightbox.addFilter('itemData', (itemData, index) => {
-            const img = itemData.element.querySelector('img');
-            
-            // Create a temporary image to get actual dimensions
-            const tempImg = new Image();
-            tempImg.src = itemData.src;
-            
-            // Use natural dimensions if available (image already loaded)
-            if (img.naturalWidth && img.naturalHeight) {
-                itemData.width = img.naturalWidth;
-                itemData.height = img.naturalHeight;
-            } else {
-                // Set placeholder dimensions that will be updated when image loads
-                itemData.width = 1920;
-                itemData.height = 1080;
-                
-                // Update dimensions when image loads
-                tempImg.onload = function() {
-                    itemData.width = this.naturalWidth;
-                    itemData.height = this.naturalHeight;
-                };
-            }
-            
-            return itemData;
-        });
-        
-        // Add custom caption
-        lightbox.on('uiRegister', function() {
-            lightbox.pswp.ui.registerElement({
-                name: 'custom-caption',
-                order: 9,
-                isButton: false,
-                appendTo: 'root',
-                html: 'Caption text',
-                onInit: (el, pswp) => {
-                    lightbox.pswp.on('change', () => {
-                        const currSlideElement = lightbox.pswp.currSlide.data.element;
-                        let captionHTML = '';
-                        if (currSlideElement) {
-                            const img = currSlideElement.querySelector('img');
-                            if (img) {
-                                captionHTML = img.getAttribute('alt');
-                            }
-                        }
-                        el.innerHTML = captionHTML || '';
-                    });
-                }
-            });
-        });
-        
-        lightbox.init();
-    </script>
+    <script src="lightbox.js"></script>
 </body>
 </html>

@@ -207,7 +207,7 @@ console.log('%cכלי קודש לוורד', 'font-size: 24px; font-weight: bold;
 console.log('%cפרויקט קוד פתוח לעורכים תורניים', 'font-size: 14px; color: #5a5a5a;');
 console.log('GitHub: https://github.com/KleiKodesh');
 
-// Gallery - Open PhotoSwipe directly
+// Gallery - Open custom lightbox directly
 const openGalleryBtn = document.getElementById('openGallery');
 
 if (openGalleryBtn) {
@@ -223,10 +223,9 @@ if (openGalleryBtn) {
             spans[2].style.transform = '';
         }
         
-        // Trigger PhotoSwipe to open at first image
-        const firstGalleryLink = document.querySelector('#gallery a');
-        if (firstGalleryLink) {
-            firstGalleryLink.click();
+        // Open lightbox at first image
+        if (window.lightboxInstance) {
+            window.lightboxInstance.open(0);
         }
     });
 }
