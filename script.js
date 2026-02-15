@@ -32,15 +32,46 @@ if (navToggle && navMenu) {
     });
 }
 
-// Theme Toggle - Using Vue Zayit theming system
+// Scroll Progress Bar
+const scrollProgress = document.getElementById('scrollProgress');
+
+function updateScrollProgress() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Calculate scroll percentage
+    const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+    
+    // Update progress bar width
+    if (scrollProgress) {
+        scrollProgress.style.width = scrollPercentage + '%';
+    }
+}
+
+// Update on scroll
+window.addEventListener('scroll', updateScrollProgress);
+
+// Update on load
+window.addEventListener('load', updateScrollProgress);
+
+// Theme Toggle - Using Tailwind's dark mode
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
 
-// Initialize theme from localStorage (no system preference on first load)
+// Initialize theme from localStorage or system preference
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
+    
     if (savedTheme === 'dark') {
         html.classList.add('dark');
+    } else if (savedTheme === 'light') {
+        html.classList.remove('dark');
+    } else {
+        // Use system preference if no saved theme
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
     }
 }
 
@@ -81,7 +112,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const nav = document.querySelector('nav');
+                const navHeight = nav ? nav.offsetHeight : 0;
                 const targetPosition = target.offsetTop - navHeight - 20;
                 window.scrollTo({
                     top: targetPosition,
@@ -91,23 +123,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// Dark mode detection (optional - can be extended)
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-const updateTheme = (e) => {
-    if (e.matches) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-};
-
-// Listen for system theme changes
-prefersDark.addEventListener('change', updateTheme);
-
-// Initial theme setup
-updateTheme(prefersDark);
 
 // Intersection Observer for fade-in animations (optional enhancement)
 const observerOptions = {
@@ -125,7 +140,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe sections for animation
-document.querySelectorAll('.section').forEach(section => {
+document.querySelectorAll('section').forEach(section => {
     section.style.opacity = '0';
     section.style.transform = 'translateY(20px)';
     section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -133,7 +148,7 @@ document.querySelectorAll('.section').forEach(section => {
 });
 
 // Form validation enhancement
-const contactForm = document.querySelector('.contact-form');
+const contactForm = document.querySelector('form[action*="formspree"]');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         const name = document.getElementById('name').value.trim();
@@ -178,7 +193,7 @@ if ('loading' in HTMLImageElement.prototype) {
 }
 
 // Add active state to nav links based on scroll position
-const sections = document.querySelectorAll('.section[id]');
+const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 
 const highlightNavLink = () => {
@@ -209,23 +224,30 @@ console.log('GitHub: https://github.com/KleiKodesh');
 
 // Gallery - Open custom lightbox directly
 const openGalleryBtn = document.getElementById('openGallery');
+const openGalleryMobileBtn = document.getElementById('openGalleryMobile');
+
+function openGallery(e) {
+    e.preventDefault();
+    
+    // Close mobile menu if open
+    if (navMenu && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        const spans = navToggle.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+    }
+    
+    // Open lightbox at first image
+    if (window.lightboxInstance) {
+        window.lightboxInstance.open(0);
+    }
+}
 
 if (openGalleryBtn) {
-    openGalleryBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Close mobile menu if open
-        if (navMenu && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            const spans = navToggle.querySelectorAll('span');
-            spans[0].style.transform = '';
-            spans[1].style.opacity = '';
-            spans[2].style.transform = '';
-        }
-        
-        // Open lightbox at first image
-        if (window.lightboxInstance) {
-            window.lightboxInstance.open(0);
-        }
-    });
+    openGalleryBtn.addEventListener('click', openGallery);
+}
+
+if (openGalleryMobileBtn) {
+    openGalleryMobileBtn.addEventListener('click', openGallery);
 }
