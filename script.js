@@ -217,6 +217,36 @@ const highlightNavLink = () => {
 
 window.addEventListener('scroll', highlightNavLink);
 
+// Fetch latest release from GitHub and update download button
+async function updateDownloadLink() {
+    const downloadBtn = document.querySelector('a[data-download-button="main"]');
+    if (!downloadBtn) return;
+    
+    try {
+        const response = await fetch('https://api.github.com/repos/KleiKodesh/KleiKodeshProject/releases/latest');
+        if (!response.ok) throw new Error('Failed to fetch release');
+        
+        const release = await response.json();
+        const setupAsset = release.assets.find(asset => asset.name.startsWith('KleiKodeshSetup-'));
+        
+        if (setupAsset) {
+            downloadBtn.href = setupAsset.browser_download_url;
+            console.log('Download link updated to:', release.tag_name);
+        } else {
+            // No setup asset found, link to releases page
+            downloadBtn.href = 'https://github.com/KleiKodesh/KleiKodeshProject/releases/latest';
+            console.warn('No setup file found in release, linking to releases page');
+        }
+    } catch (error) {
+        console.warn('Could not fetch latest release, linking to releases page:', error);
+        // Fallback to latest release page
+        downloadBtn.href = 'https://github.com/KleiKodesh/KleiKodeshProject/releases/latest';
+    }
+}
+
+// Update download link on page load
+updateDownloadLink();
+
 // Console message for developers
 console.log('%cכלי קודש לוורד', 'font-size: 24px; font-weight: bold; color: #0078d4;');
 console.log('%cפרויקט קוד פתוח לעורכים תורניים', 'font-size: 14px; color: #5a5a5a;');
