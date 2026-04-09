@@ -78,6 +78,10 @@ class SimpleLightbox {
     open(index) {
         this.currentIndex = index;
         this.updateImage();
+        // Force reflow so the CSS transition fires correctly when opened programmatically
+        this.lightbox.style.display = 'flex';
+        // eslint-disable-next-line no-unused-expressions
+        this.lightbox.offsetHeight; // trigger reflow
         this.lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -146,10 +150,13 @@ function initLightbox() {
         window.lightboxInstance = new SimpleLightbox('#gallery');
 
         // Open gallery from URL param: ?gallery or ?gallery=2
-        const params = new URLSearchParams(window.location.search);
-        if (params.has('gallery')) {
-            const index = parseInt(params.get('gallery')) || 0;
-            window.lightboxInstance.open(index);
-        }
+        // Deferred to after full page load so nothing overrides body overflow
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('gallery')) {
+                const index = parseInt(params.get('gallery')) || 0;
+                window.lightboxInstance.open(index);
+            }
+        });
     }
 }
