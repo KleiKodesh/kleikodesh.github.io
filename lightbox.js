@@ -144,5 +144,12 @@ function initLightbox() {
     const gallery = document.querySelector('#gallery');
     if (gallery) {
         window.lightboxInstance = new SimpleLightbox('#gallery');
+
+        // Open gallery from URL param: ?gallery or ?gallery=2
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('gallery')) {
+            const index = parseInt(params.get('gallery')) || 0;
+            window.lightboxInstance.open(index);
+        }
     }
 }
