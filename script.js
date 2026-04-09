@@ -252,6 +252,20 @@ console.log('%cכלי קודש לוורד', 'font-size: 24px; font-weight: bold;
 console.log('%cפרויקט קוד פתוח לעורכים תורניים', 'font-size: 14px; color: #5a5a5a;');
 console.log('GitHub: https://github.com/KleiKodesh');
 
+// Open gallery from URL param: ?gallery or ?gallery=2
+function openGalleryFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('gallery') && window.lightboxInstance) {
+        const index = parseInt(params.get('gallery')) || 0;
+        window.lightboxInstance.open(index);
+    }
+}
+
+// Wait for lightbox to initialize then check URL
+window.addEventListener('load', () => {
+    setTimeout(openGalleryFromUrl, 100);
+});
+
 // Gallery - Open custom lightbox directly
 const openGalleryBtn = document.getElementById('openGallery');
 const openGalleryMobileBtn = document.getElementById('openGalleryMobile');
