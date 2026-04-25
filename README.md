@@ -29,4 +29,4 @@ kleikodesh.github.io/
 
 ## Relationship to the Main Project
 
-This folder is not part of the Visual Studio solution. It is a standalone static site that links to the installer (`KleiKodeshVstoInstallerWpf` build output) hosted elsewhere (e.g. GitHub Releases).
+This folder is not part of the Visual Studio solution. It is a standalone static site that links to the installer (`Build/Installer` build output) hosted elsewhere (e.g. GitHub Releases).
