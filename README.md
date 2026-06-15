@@ -1,4 +1,4 @@
-# kleikodesh.github.io — Project Website
+# kleikodesh-website
 
 The public-facing website for the KleiKodesh project, hosted at [kleikodesh.github.io](https://kleikodesh.github.io).
 
