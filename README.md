@@ -9,14 +9,20 @@ A static HTML/CSS/JS site that serves as the download and information page for t
 ## Structure
 
 ```
-kleikodesh.github.io/
+kleikodesh-website/
 ├── index.html              — Single-page site
 ├── style.css               — Custom styles
 ├── script.js               — Theme toggle, scroll progress, gallery interactions
 ├── lightbox.css / .js      — Lightbox for screenshot gallery
 ├── photoswipe.esm.js / .css — PhotoSwipe image viewer
-├── images/                 — Screenshots and logos
-└── Files/                  — Downloadable guides and Word templates
+├── Klei_Kodesh.png            — Social preview image
+├── Klei_Kodesh.ico            — Favicon
+├── Klei_Kodesh-Logo.png       — Logo asset
+├── Klei_Kodesh-Logo copy.png  — Logo variant
+├── mitmachim-favicon.ico      — Secondary favicon
+├── photoswipe-lightbox.esm.js — PhotoSwipe lightbox module
+├── images/                    — Screenshots and logos
+└── Files/                     — Downloadable guides and Word templates
 ```
 
 ## Sections
