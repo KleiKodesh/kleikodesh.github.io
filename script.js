@@ -227,13 +227,18 @@ async function updateDownloadLink() {
         if (!response.ok) throw new Error('Failed to fetch release');
         
         const release = await response.json();
+        console.log('All release assets:', release.assets.map(a => a.name));
+
         const setupAsset =
             release.assets.find(asset => /^KleiKodeshSetup-.*\.exe$/.test(asset.name) && !asset.name.includes('-x64') && !asset.name.includes('-x86')) ||
             release.assets.find(asset => asset.name.startsWith('KleiKodeshSetup-'));
-        
+
+        console.log('Selected asset:', setupAsset ? setupAsset.name : 'none');
+        console.log('Download URL:', setupAsset ? setupAsset.browser_download_url : 'fallback to releases page');
+
         if (setupAsset) {
             downloadBtn.href = setupAsset.browser_download_url;
-            console.log('Download link updated to:', release.tag_name);
+            console.log('Download button href set to:', downloadBtn.href);
         } else {
             // No setup asset found, link to releases page
             downloadBtn.href = 'https://github.com/KleiKodesh/KleiKodeshProject/releases/latest';
@@ -248,11 +253,6 @@ async function updateDownloadLink() {
 
 // Update download link on page load
 updateDownloadLink();
-
-// Console message for developers
-console.log('%cכלי קודש לוורד', 'font-size: 24px; font-weight: bold; color: #0078d4;');
-console.log('%cפרויקט קוד פתוח לעורכים תורניים', 'font-size: 14px; color: #5a5a5a;');
-console.log('GitHub: https://github.com/KleiKodesh');
 
 // Gallery - Open custom lightbox directly
 const openGalleryBtn = document.getElementById('openGallery');
