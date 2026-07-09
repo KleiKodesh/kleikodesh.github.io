@@ -227,7 +227,9 @@ async function updateDownloadLink() {
         if (!response.ok) throw new Error('Failed to fetch release');
         
         const release = await response.json();
-        const setupAsset = release.assets.find(asset => asset.name.startsWith('KleiKodeshSetup-'));
+        const setupAsset =
+            release.assets.find(asset => asset.name.startsWith('KleiKodeshSetup-') && !/-x64\.exe$|-x86\.exe$/i.test(asset.name)) ||
+            release.assets.find(asset => asset.name.startsWith('KleiKodeshSetup-'));
         
         if (setupAsset) {
             downloadBtn.href = setupAsset.browser_download_url;
