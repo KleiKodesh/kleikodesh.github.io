@@ -228,7 +228,7 @@ async function updateDownloadLink() {
         
         const release = await response.json();
         const setupAsset =
-            release.assets.find(asset => asset.name.startsWith('KleiKodeshSetup-') && !/-x64\.exe$|-x86\.exe$/i.test(asset.name)) ||
+            release.assets.find(asset => /^KleiKodeshSetup-.*\.exe$/.test(asset.name) && !asset.name.includes('-x64') && !asset.name.includes('-x86')) ||
             release.assets.find(asset => asset.name.startsWith('KleiKodeshSetup-'));
         
         if (setupAsset) {
