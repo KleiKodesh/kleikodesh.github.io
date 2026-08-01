@@ -217,42 +217,23 @@ const highlightNavLink = () => {
 
 window.addEventListener('scroll', highlightNavLink);
 
-// Fetch latest release from GitHub and update download button
-async function updateDownloadLink() {
-    const downloadBtn = document.querySelector('a[data-download-button="main"]');
-    if (!downloadBtn) return;
-    
-    try {
-        const response = await fetch('https://api.github.com/repos/KleiKodesh/KleiKodeshProject/releases/latest');
-        if (!response.ok) throw new Error('Failed to fetch release');
-        
-        const release = await response.json();
-        console.log('All release assets:', release.assets.map(a => a.name));
-
-        const setupAsset =
-            release.assets.find(asset => /^KleiKodeshSetup-.*\.exe$/.test(asset.name) && !asset.name.includes('-x64') && !asset.name.includes('-x86')) ||
-            release.assets.find(asset => asset.name.startsWith('KleiKodeshSetup-'));
-
-        console.log('Selected asset:', setupAsset ? setupAsset.name : 'none');
-        console.log('Download URL:', setupAsset ? setupAsset.browser_download_url : 'fallback to releases page');
-
-        if (setupAsset) {
-            downloadBtn.href = setupAsset.browser_download_url;
-            console.log('Download button href set to:', downloadBtn.href);
-        } else {
-            // No setup asset found, link to releases page
-            downloadBtn.href = 'https://github.com/KleiKodesh/KleiKodeshProject/releases/latest';
-            console.warn('No setup file found in release, linking to releases page');
-        }
-    } catch (error) {
-        console.warn('Could not fetch latest release, linking to releases page:', error);
-        // Fallback to latest release page
-        downloadBtn.href = 'https://github.com/KleiKodesh/KleiKodeshProject/releases/latest';
-    }
-}
-
-// Update download link on page load
-updateDownloadLink();
+// The download button's URL is static, in index.html:
+//   /releases/latest/download/KleiKodeshSetup.exe
+// GitHub resolves "latest" server-side, so it never needs updating per release, and
+// it downloads without an api.github.com call — which matters on the networks most
+// of our users are on (content filters such as NetFree/Rimon block that subdomain,
+// and shared institutional IPs hit the 60 req/hr anonymous rate limit).
+//
+// There used to be JS here that fetched the release from the API and rewrote the
+// href. It is deliberately gone. It could only ever replace the link with an
+// equivalent one, and while it was running it *masked* a broken static href — the
+// button worked for anyone who could reach the API, so a bad URL only failed for
+// exactly the filtered users the static link exists to serve. Keeping the href the
+// single source of truth means a mistake in it is visible immediately.
+//
+// The name KleiKodeshSetup.exe is the stable copy published by
+// Build/scripts/build-installer.ps1, which verifies this URL returns 200 before a
+// release is considered successful.
 
 // Gallery - Open custom lightbox directly
 const openGalleryBtn = document.getElementById('openGallery');
