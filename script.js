@@ -217,23 +217,19 @@ const highlightNavLink = () => {
 
 window.addEventListener('scroll', highlightNavLink);
 
-// The download button's URL is static, in index.html:
-//   /releases/latest/download/KleiKodeshSetup.exe
-// GitHub resolves "latest" server-side, so it never needs updating per release, and
-// it downloads without an api.github.com call — which matters on the networks most
-// of our users are on (content filters such as NetFree/Rimon block that subdomain,
-// and shared institutional IPs hit the 60 req/hr anonymous rate limit).
+// The download button's URL is static, in index.html — a full versioned link to the
+// AnyCPU installer. Build/scripts/build-installer.ps1 rewrites it and pushes this
+// repo at the end of every release, after confirming the new asset downloads.
 //
-// There used to be JS here that fetched the release from the API and rewrote the
-// href. It is deliberately gone. It could only ever replace the link with an
-// equivalent one, and while it was running it *masked* a broken static href — the
-// button worked for anyone who could reach the API, so a bad URL only failed for
-// exactly the filtered users the static link exists to serve. Keeping the href the
-// single source of truth means a mistake in it is visible immediately.
+// It is deliberately NOT resolved in JS. There used to be code here that fetched the
+// release from the GitHub API and set the href at load time; it broke the button for
+// exactly the users it was meant to serve — content filters (NetFree/Rimon) block
+// api.github.com, and shared institutional IPs exhaust the 60 req/hr anonymous rate
+// limit — while masking any mistake in the static href from everyone else, since a
+// working API call overwrote it before anyone could notice.
 //
-// The name KleiKodeshSetup.exe is the stable copy published by
-// Build/scripts/build-installer.ps1, which verifies this URL returns 200 before a
-// release is considered successful.
+// So: don't reintroduce a runtime lookup here. If the link is stale, the release
+// script is the thing to fix.
 
 // Gallery - Open custom lightbox directly
 const openGalleryBtn = document.getElementById('openGallery');
