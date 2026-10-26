@@ -1,0 +1,52 @@
+# Keeps the download button pointed at the installer of the LATEST release of
+# KleiKodesh/KleiKodeshProject. Runs when that repo pings us (release published,
+# edited, deleted...), on a schedule as a safety net, and by hand.
+name: Sync download link
+
+on:
+  repository_dispatch:
+    types: [release-changed]
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-download-link
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Point the button at the latest installer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          url=$(gh api repos/KleiKodesh/KleiKodeshProject/releases/latest \
+            --jq '[.assets[] | select(.name | test("^KleiKodeshSetup-v[0-9.]+\.exe$"))][0].browser_download_url // empty')
+          if [ -z "$url" ]; then
+            echo "::error::Latest release has no KleiKodeshSetup-v*.exe asset - website NOT changed."
+            exit 1
+          fi
+          # Never link to something that 404s.
+          curl -sfIL --max-time 60 "$url" > /dev/null || { echo "::error::$url is not downloadable"; exit 1; }
+          echo "latest installer: $url"
+
+          # Anchor on data-download-button="main", whatever the old href was.
+          perl -0pi -e 's{(href=")[^"]*("[^>]*?data-download-button="main")}{$1'"$url"'$2}s' index.html
+          grep -qF "$url" index.html || { echo "::error::download button not found in index.html"; exit 1; }
+
+          if git diff --quiet -- index.html; then
+            echo "already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "download button: point at $(basename "$url")" -- index.html
+          git push
