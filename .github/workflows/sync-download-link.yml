@@ -1,13 +1,13 @@
 # Keeps the download button pointed at the installer of the LATEST release of
 # KleiKodesh/KleiKodeshProject. Runs when that repo pings us (release published,
-# edited, deleted...), on a schedule as a safety net, and by hand.
+# edited, deleted...), weekly as a safety net, and by hand.
 name: Sync download link
 
 on:
   repository_dispatch:
     types: [release-changed]
   schedule:
-    - cron: "17 * * * *"
+    - cron: "17 3 * * 0"
   workflow_dispatch:
 
 permissions:
