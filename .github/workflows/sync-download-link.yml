@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: sync-download-link
@@ -50,3 +51,34 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "download button: point at $(basename "$url")" -- index.html
           git push
+
+      # GitHub's own failure email is generic: open an issue (emailed to the repo owner) with the fix steps.
+      - name: Open an issue with fix steps
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Download button sync failed - the website may link to an old installer"
+          if gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number' | grep -q .; then
+            echo "An open issue already exists."; exit 0
+          fi
+          cat > body.md <<'MD'
+          The website's download button could not be updated to the latest KleiKodesh release.
+          Open the failed run (link below) and find the red `::error::` line:
+
+          - **"Latest release has no KleiKodeshSetup-v*.exe asset"**: the newest release in
+            KleiKodesh/KleiKodeshProject is missing its installer. Upload `KleiKodeshSetup-vX.Y.Z.exe` to it
+            (or delete that broken release), then rerun.
+          - **"... is not downloadable"**: GitHub was briefly unreachable, or the file was removed. Rerun; if it
+            fails again, check the release's installer opens in a browser.
+          - **"download button not found in index.html"**: the button lost its `data-download-button="main"`
+            attribute. Put it back on the main download link in `index.html`, then rerun.
+          - **`git push` failed**: someone pushed at the same moment. Just rerun.
+
+          **Rerun:** open the run, click **Re-run jobs**, or run
+          `gh workflow run sync-download-link.yml --repo KleiKodesh/kleikodesh.github.io`.
+          When it passes, close this issue.
+          MD
+          printf '\nFailed run: %s\n' "$RUN_URL" >> body.md
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file body.md
