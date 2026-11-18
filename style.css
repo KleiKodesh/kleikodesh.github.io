@@ -435,3 +435,19 @@ body { padding-bottom: 40px; } /* the strip never covers the footer */
   /* The picture keeps its 600:678 shape and is never taller than the space left for it. */
   .reel { width: min(400px, calc((100svh - 48px - 40px - 2 * clamp(10px, 3.5vh, 32px) - 30px) * 600 / 678)); }
 }
+
+/* ---------- Download window: one card per choice ---------- */
+
+.download-dialog { width: min(460px, calc(100vw - 32px)); }
+.download-option {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 10px; padding: 14px 16px;
+  border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text); text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.download-option:hover { border-color: var(--accent); background: var(--header); text-decoration: none; }
+.download-option img { width: 40px; height: 40px; flex: none; }
+.download-option b { display: block; font-weight: 600; }
+.download-option small { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+.download-option[hidden] { display: none; } /* the library card stays hidden until it has a real link */

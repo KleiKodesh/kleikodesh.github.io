@@ -146,12 +146,8 @@
               <li data-part="kitvei"><img src="images/kitvei-logo.png" alt="" width="28" height="28" /><b data-en="Kitvei Hakodesh">כתבי הקודש</b><span data-en="A Torah library">ספרייה תורנית</span></li>
               <li data-part="tutor"><img src="images/tutor.svg" alt="" width="28" height="28" /><b data-en="Typing Tutor">מאמן הקלדה</b><span data-en="In Hebrew">בעברית</span></li>
             </ul>
-            <a
-              href="https://github.com/KleiKodesh/KleiKodeshProject/releases/download/v10.6.0/KleiKodeshSetup-v10.6.0.exe"
-              data-download-button="main"
-              class="btn btn--big"
-              data-en="Click to download"
-            >להורדה לחץ כאן</a>
+            <button type="button" class="btn btn--big" data-open-download data-en="Click to download">להורדה לחץ כאן</button>
+            <p class="hero__note" data-en="Supports the Otzaria and Zayit libraries: works alongside them, or on its own.">תומך במאגרי הספרים של אוצריא וזית: עובד לצידם, או באופן עצמאי.</p>
             <!-- Show and tell: what the picture beside it shows (script.js fills it). -->
             <div class="tell" aria-live="polite">
               <h2 class="tell__title"></h2>
@@ -193,6 +189,7 @@
             <ul>
               <li><a href="#contact" data-open-contact data-en="Send a message">שליחת הודעה</a></li>
               <li><a href="https://github.com/KleiKodesh/KleiKodeshProject/issues" target="_blank" rel="noopener" data-en="Report a bug">דיווח על באג</a></li>
+              <li><a href="https://forum.otzaria.org/category/27" target="_blank" rel="noopener" data-en="Open a topic on the Otzaria forum">פתח נושא בפורום אוצריא</a></li>
             </ul>
           </div>
         </div>
@@ -211,11 +208,45 @@
         <span class="quotes__item" data-en="Saves a great deal of time and makes study and editing wonderfully efficient.">חוסך זמן רב ביותר, ומייעל את הלימוד ועבודות העריכה בצורה נפלאה.</span><span class="quotes__sep" aria-hidden="true">·</span>
         <span class="quotes__item" data-en="Beautiful Torah in a beautiful vessel! Accessible and enlightening!">תורה נאה בכלי נאה! נגיש, ומאיר עיניים!</span><span class="quotes__sep" aria-hidden="true">·</span>
         <span class="quotes__item" data-en="At last I found the Word add-in I was always missing.">סוף סוף מצאתי תוסף וורד שתמיד היה חסר לי.</span><span class="quotes__sep" aria-hidden="true">·</span>
-        <span class="quotes__item" data-en="The new version is wonderful — a great interface and much faster search.">הגרסה החדשה נפלאה — ממשק מדהים וחיפוש מהיר הרבה יותר.</span><span class="quotes__sep" aria-hidden="true">·</span>
         <span class="quotes__item" data-en="Clean and amazing, and very comfortable for study.">נקי ומדהים, ומאוד נוח ללימוד.</span><span class="quotes__sep" aria-hidden="true">·</span>
         <span class="quotes__item" data-en="Beautiful, pleasant to look at and easy on the eyes — no words for how much I enjoy it.">יפה, נחמד למראה וטוב לעיניים — אין מילים לתאר את ההנאה.</span><span class="quotes__sep" aria-hidden="true">·</span>
       </div>
     </aside>
+
+    <!-- Download window: the choices behind the hero button. The installer link keeps
+         data-download-button="main" (href first): the sync-download-link workflow rewrites it
+         after every release. -->
+    <dialog class="contact-dialog download-dialog" id="download-options">
+      <div class="contact__head">
+        <h2 data-en="Download">הורדה</h2>
+        <button type="button" class="icon-btn" data-close-dialog aria-label="סגירה" data-en-aria-label="Close">✕</button>
+      </div>
+      <a class="download-option"
+        href="https://github.com/KleiKodesh/KleiKodeshProject/releases/download/v10.6.0/KleiKodeshSetup-v10.6.0.exe"
+        data-download-button="main">
+        <img src="images/kleikodesh-logo.png" alt="" width="40" height="40" />
+        <span>
+          <b data-en="Klei Kodesh — full install">כלי קודש — התקנה מלאה</b>
+          <small data-en="Word add-in, Kitvei Hakodesh and the typing tutor. Choose the parts during setup.">תוסף לוורד, כתבי הקודש ומאמן ההקלדה. בוחרים את הרכיבים בהתקנה.</small>
+        </span>
+      </a>
+      <a class="download-option"
+        href="https://github.com/KleiKodesh/KleiKodeshProject/releases/download/v10.6.0/KitveiHakodeshPortable-v10.6.0.zip"
+        data-download-button="portable">
+        <img src="images/kitvei-logo.png" alt="" width="40" height="40" />
+        <span>
+          <b data-en="Kitvei Hakodesh — portable">כתבי הקודש — גרסה ניידת</b>
+          <small data-en="No installation: unzip and run, also from a USB drive.">בלי התקנה: פותחים את הקובץ ומריצים, גם מדיסק און קי.</small>
+        </span>
+      </a>
+      <a class="download-option" href="#" data-library-download hidden>
+        <img src="images/kitvei-logo.png" alt="" width="40" height="40" />
+        <span>
+          <b data-en="The books library only">מאגר הספרים בלבד</b>
+          <small data-en="The library database, for use with the app.">מסד הנתונים של הספרייה, לשימוש עם התוכנה.</small>
+        </span>
+      </a>
+    </dialog>
 
     <!-- Contact form window (sent through Formspree). Opened by [data-open-contact]. -->
     <dialog class="contact-dialog" id="contact">

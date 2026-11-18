@@ -43,13 +43,25 @@ jobs:
           perl -0pi -e 's{(href=")[^"]*("[^>]*?data-download-button="main")}{$1'"$url"'$2}s' index.html
           grep -qF "$url" index.html || { echo "::error::download button not found in index.html"; exit 1; }
 
+          # The portable Kitvei Hakodesh zip, same way (data-download-button="portable").
+          portable=$(gh api repos/KleiKodesh/KleiKodeshProject/releases/latest \
+            --jq '[.assets[] | select(.name | test("^KitveiHakodeshPortable-v[0-9.]+[.]zip$"))][0].browser_download_url // empty')
+          if [ -z "$portable" ]; then
+            echo "::error::Latest release has no KitveiHakodeshPortable-v*.zip asset - website NOT changed."
+            exit 1
+          fi
+          curl -sfIL --max-time 60 "$portable" > /dev/null || { echo "::error::$portable is not downloadable"; exit 1; }
+          echo "latest portable: $portable"
+          perl -0pi -e 's{(href=")[^"]*("[^>]*?data-download-button="portable")}{$1'"$portable"'$2}s' index.html
+          grep -qF "$portable" index.html || { echo "::error::portable download link not found in index.html"; exit 1; }
+
           if git diff --quiet -- index.html; then
             echo "already up to date"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "download button: point at $(basename "$url")" -- index.html
+          git commit -m "download links: point at $(basename "$url") and $(basename "$portable")" -- index.html
           git push
 
       # GitHub's own failure email is generic: open an issue (emailed to the repo owner) with the fix steps.
@@ -72,8 +84,10 @@ jobs:
             (or delete that broken release), then rerun.
           - **"... is not downloadable"**: GitHub was briefly unreachable, or the file was removed. Rerun; if it
             fails again, check the release's installer opens in a browser.
-          - **"download button not found in index.html"**: the button lost its `data-download-button="main"`
-            attribute. Put it back on the main download link in `index.html`, then rerun.
+          - **"download button not found in index.html"** / **"portable download link not found"**: a link lost
+            its `data-download-button="main"` / `"portable"` attribute. Put it back in `index.html`, then rerun.
+          - **"Latest release has no KitveiHakodeshPortable-v*.zip asset"**: upload the portable zip to the
+            newest release (or delete that broken release), then rerun.
           - **`git push` failed**: someone pushed at the same moment. Just rerun.
 
           **Rerun:** open the run, click **Re-run jobs**, or run

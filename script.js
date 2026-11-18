@@ -190,6 +190,17 @@ if (mainDownload) {
     go(0);
 })();
 
+// Download window: [data-open-download] opens it; any [data-close-dialog], Esc or a click
+// on the backdrop closes it. Picking an option closes it too.
+(function downloadDialog() {
+    const dialog = document.getElementById('download-options');
+    if (!dialog) return;
+    document.querySelectorAll('[data-open-download]').forEach(b => b.addEventListener('click', () => dialog.showModal()));
+    dialog.querySelectorAll('[data-close-dialog]').forEach(b => b.addEventListener('click', () => dialog.close()));
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+    dialog.querySelectorAll('.download-option').forEach(a => a.addEventListener('click', () => dialog.close()));
+})();
+
 // Contact window: [data-open-contact] opens it; the close button, Esc or a click on the
 // backdrop closes it.
 (function contactDialog() {
