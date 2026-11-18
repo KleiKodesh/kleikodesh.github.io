@@ -76,9 +76,21 @@ if (mainDownload) {
     let current = -1;
     let timer = null;
 
+    // Every picture exists per language and theme: images/shots/<he|en>/<light|dark>/<name>.png.
+    function shotSrc(picture) {
+        const lang = root.lang.startsWith('en') ? 'en' : 'he';
+        const theme = root.classList.contains('dark') ? 'dark' : 'light';
+        return `images/shots/${lang}/${theme}/${picture.dataset.shot}.png`;
+    }
+
+    // The theme toggle (or anything else) flips <html class="dark">: show the matching set at once.
+    new MutationObserver(() => {
+        if (current >= 0) image.src = shotSrc(pictures[current]);
+    }).observe(root, { attributes: true, attributeFilter: ['class', 'lang'] });
+
     function render(index) {
         const picture = pictures[index];
-        image.src = picture.getAttribute('src');
+        image.src = shotSrc(picture);
         image.alt = picture.alt;
         if (tellTitle) tellTitle.textContent = picture.alt;
         if (tellText) tellText.textContent = picture.dataset.desc || '';

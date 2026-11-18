@@ -154,24 +154,25 @@
     </dialog>
 
     <!-- The slideshow's pictures, in order (hidden; script.js reads them). All 600 x 678 px.
-         alt = title, data-desc = description, data-part = which part it belongs to. -->
+         alt = title, data-desc = description, data-part = which part it belongs to,
+         data-shot = file name in images/shots/<he|en>/<light|dark>/ (script.js picks the set). -->
     <div id="slides" hidden>
-      <img data-part="kitvei" data-desc="ספרייה תורנית שלמה: תנ״ך, ש״ס, מפרשים ופוסקים, עם חיפוש בכל הטקסט, היברו-בוקס, מילון ולוח שנה. זמינה כחלונית בתוך וורד וכתוכנה עצמאית." src="images/shot-kitvei.png" alt="כתבי הקודש" width="600" height="678" />
-      <img data-part="kitvei" data-desc="ספר פתוח עם המפרשים לצידו: רש״י, אבן עזרא ושאר המפרשים על כל פסוק, בלחיצה." src="images/shot-kitvei-book.png" alt="כתבי הקודש — עיון בספר" width="600" height="678" />
-      <img data-part="kitvei" data-desc="חיפוש מהיר בכל הספרים בבת אחת, עם המילים שנמצאו מודגשות בתוצאות." src="images/shot-kitvei-search.png" alt="כתבי הקודש — חיפוש בכל הספרייה" width="600" height="678" />
-      <img data-part="kitvei" data-desc="פותח מסמכי Word ישירות בתוכנה, בתצוגה נקייה ונוחה לקריאה." src="images/shot-kitvei-docx.png" alt="כתבי הקודש — מציג מסמכים" width="600" height="678" />
-      <img data-part="kitvei" data-desc="ספרי PDF נפתחים בתוכנה, עם כלי סימון והערות." src="images/shot-kitvei-pdf.png" alt="כתבי הקודש — מציג PDF" width="600" height="678" />
-      <img data-part="kitvei" data-desc="חיפוש בקטלוג היברו-בוקס לפי שם, מחבר ונושא, והורדת הספר בלחיצה." src="images/shot-kitvei-hebrewbooks.png" alt="כתבי הקודש — היברו-בוקס" width="600" height="678" />
-      <img data-part="kitvei" data-desc="פירוש מילים מכמה מילונים ומפרשים יחד, עם מילים קשורות." src="images/shot-kitvei-dictionary.png" alt="כתבי הקודש — מילון" width="600" height="678" />
-      <img data-part="kitvei" data-desc="לוח שנה עברי עם זמני היום והלימוד היומי לכל יום." src="images/shot-kitvei-calendar.png" alt="כתבי הקודש — לוח שנה" width="600" height="678" />
-      <img data-part="addin" data-desc="יישור פסקאות, מספר שורות מינימלי, ומילה ראשונה בסגנון משלכם — המסמך נראה כמו ספר." src="images/shot-pane-docdesign.png" alt="עיצוב תורני — פסקאות" width="600" height="678" />
-      <img data-part="addin" data-desc="איזון טורים בלחיצה: הטורים נגמרים באותו גובה, עם שליטה על המרווח בין הקטעים." src="images/shot-pane-docdesign-columns.png" alt="עיצוב תורני — איזון טורים" width="600" height="678" />
-      <img data-part="addin" data-desc="מרווח לפני ואחרי, בין שורות, מילים ואותיות, ומתיחת אותיות — בצעדים קטנים, עם חזרה לברירת המחדל." src="images/shot-pane-docdesign-spacing.png" alt="עיצוב תורני — מרווחים" width="600" height="678" />
-      <img data-part="addin" data-desc="מסמנים טקסט ומקבלים אותו מנוקד. בוחרים סוג טקסט ומדלגים על סגנונות שלא צריך." src="images/shot-pane-nakdan.png" alt="ניקוד" width="600" height="678" />
-      <img data-part="addin" data-desc="חיפוש והחלפה לפי תבניות, גם לפי עיצוב, גופן וסגנון — הרבה מעבר לחיפוש של וורד." src="images/shot-pane-regex.png" alt="חיפוש רגקס" width="600" height="678" />
-      <img data-part="addin" data-desc="המכלול, דיקטה, אוצר החכמה ואתרים תורניים נוספים — בחלונית לצד המסמך." src="images/shot-pane-websites.png" alt="דרך האתרים" width="600" height="678" />
-      <img data-part="addin" data-desc="אנציקלופדיות ואתרים שמורים במחשב, לעבודה גם בלי אינטרנט." src="images/shot-pane-kiwix.png" alt="קיוויקס" width="600" height="678" />
-      <img data-part="tutor" data-desc="מאמן הקלדה בעברית בצורה בוגרת וחדשנית: שלב אחר שלב, עם מקלדת וידיים על המסך. עובד גם בלי אינטרנט." src="images/shot-tutor.png" alt="מאמן הקלדה בעברית" width="600" height="678" />
+      <img data-part="kitvei" data-desc="ספרייה תורנית שלמה: תנ״ך, ש״ס, מפרשים ופוסקים, עם חיפוש בכל הטקסט, היברו-בוקס, מילון ולוח שנה. זמינה כחלונית בתוך וורד וכתוכנה עצמאית." data-shot="kitvei-home" alt="כתבי הקודש" width="600" height="678" />
+      <img data-part="kitvei" data-desc="ספר פתוח עם המפרשים לצידו: רש״י, אבן עזרא ושאר המפרשים על כל פסוק, בלחיצה." data-shot="kitvei-book" alt="כתבי הקודש — עיון בספר" width="600" height="678" />
+      <img data-part="kitvei" data-desc="חיפוש מהיר בכל הספרים בבת אחת, עם המילים שנמצאו מודגשות בתוצאות." data-shot="kitvei-search" alt="כתבי הקודש — חיפוש בכל הספרייה" width="600" height="678" />
+      <img data-part="kitvei" data-desc="פותח מסמכי Word ישירות בתוכנה, בתצוגה נקייה ונוחה לקריאה." data-shot="kitvei-docx" alt="כתבי הקודש — מציג מסמכים" width="600" height="678" />
+      <img data-part="kitvei" data-desc="ספרי PDF נפתחים בתוכנה, עם כלי סימון והערות." data-shot="kitvei-pdf" alt="כתבי הקודש — מציג PDF" width="600" height="678" />
+      <img data-part="kitvei" data-desc="חיפוש בקטלוג היברו-בוקס לפי שם, מחבר ונושא, והורדת הספר בלחיצה." data-shot="kitvei-hebrewbooks" alt="כתבי הקודש — היברו-בוקס" width="600" height="678" />
+      <img data-part="kitvei" data-desc="פירוש מילים מכמה מילונים ומפרשים יחד, עם מילים קשורות." data-shot="kitvei-dictionary" alt="כתבי הקודש — מילון" width="600" height="678" />
+      <img data-part="kitvei" data-desc="לוח שנה עברי עם זמני היום והלימוד היומי לכל יום." data-shot="kitvei-calendar" alt="כתבי הקודש — לוח שנה" width="600" height="678" />
+      <img data-part="addin" data-desc="יישור פסקאות, מספר שורות מינימלי, ומילה ראשונה בסגנון משלכם — המסמך נראה כמו ספר." data-shot="pane-docdesign" alt="עיצוב תורני — פסקאות" width="600" height="678" />
+      <img data-part="addin" data-desc="איזון טורים בלחיצה: הטורים נגמרים באותו גובה, עם שליטה על המרווח בין הקטעים." data-shot="pane-docdesign-columns" alt="עיצוב תורני — איזון טורים" width="600" height="678" />
+      <img data-part="addin" data-desc="מרווח לפני ואחרי, בין שורות, מילים ואותיות, ומתיחת אותיות — בצעדים קטנים, עם חזרה לברירת המחדל." data-shot="pane-docdesign-spacing" alt="עיצוב תורני — מרווחים" width="600" height="678" />
+      <img data-part="addin" data-desc="מסמנים טקסט ומקבלים אותו מנוקד. בוחרים סוג טקסט ומדלגים על סגנונות שלא צריך." data-shot="pane-nakdan" alt="ניקוד" width="600" height="678" />
+      <img data-part="addin" data-desc="חיפוש והחלפה לפי תבניות, גם לפי עיצוב, גופן וסגנון — הרבה מעבר לחיפוש של וורד." data-shot="pane-regex" alt="חיפוש רגקס" width="600" height="678" />
+      <img data-part="addin" data-desc="המכלול, דיקטה, אוצר החכמה ואתרים תורניים נוספים — בחלונית לצד המסמך." data-shot="pane-websites" alt="דרך האתרים" width="600" height="678" />
+      <img data-part="addin" data-desc="אנציקלופדיות ואתרים שמורים במחשב, לעבודה גם בלי אינטרנט." data-shot="pane-kiwix" alt="קיוויקס" width="600" height="678" />
+      <img data-part="tutor" data-desc="מאמן הקלדה בעברית בצורה בוגרת וחדשנית: שלב אחר שלב, עם מקלדת וידיים על המסך. עובד גם בלי אינטרנט." data-shot="tutor" alt="מאמן הקלדה בעברית" width="600" height="678" />
     </div>
 
     <script src="script.js?v=8"></script>
