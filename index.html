@@ -5,20 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="כלי קודש - כל מה שעורך תורני צריך, בתוך וורד: ספרייה, עיצוב, ניקוד וחיפוש. חינם. | Klei Kodesh - a free Torah toolbox for Microsoft Word, plus the Kitvei Hakodesh library app."
+      content="כלי קודש וכתבי הקודש: תוסף לוורד ותוכנת ספרייה תורנית חינמית - תנ״ך, ש״ס ומפרשים, חיפוש בכל הספרים, היברו-בוקס, עיצוב תורני, ניקוד ומאמן הקלדה בעברית. | Klei Kodesh and Kitvei Hakodesh: a free Torah library app and Word add-in."
     />
     <meta
       name="keywords"
-      content="כלי קודש, כתבי הקודש, וורד, תוסף לוורד, עיצוב תורני, ניקוד, חיפוש רגקס, מאמן הקלדה, Klei Kodesh, Kitvei Hakodesh, Word add-in"
+      content="כתבי הקודש, תוכנת כתבי הקודש, כלי קודש, ספרייה תורנית, תוסף לוורד, עיצוב תורני, ניקוד, חיפוש רגקס, היברו-בוקס, מאמן הקלדה, Kitvei Hakodesh, Klei Kodesh, Torah library, Word add-in"
     />
     <meta name="author" content="פרויקט כלי קודש | Klei Kodesh Project" />
-    <title>כלי קודש - ארגז הכלים של העורך התורני</title>
+    <title data-en="Klei Kodesh and Kitvei Hakodesh - a free Torah library and Word add-in">כלי קודש וכתבי הקודש - ספרייה תורנית ותוסף לוורד, חינם</title>
     <link rel="icon" href="Klei_Kodesh-Logo.png" type="image/png" />
+    <link rel="canonical" href="https://kleikodesh.github.io/" />
+    <!-- Link previews (WhatsApp, forums, social). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kleikodesh.github.io/" />
+    <meta property="og:title" content="כלי קודש וכתבי הקודש - ספרייה תורנית ותוסף לוורד, חינם" />
+    <meta property="og:description" content="ספרייה תורנית שלמה וכלים לוורד: חיפוש בכל הספרים, היברו-בוקס, עיצוב תורני, ניקוד ומאמן הקלדה. חינם." />
+    <meta property="og:image" content="https://kleikodesh.github.io/images/shots/he/light/kitvei-home.png" />
+    <meta property="og:locale" content="he_IL" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Tells search engines what this site offers: the two programs by name (Hebrew + English). -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://kleikodesh.github.io/#site",
+            "url": "https://kleikodesh.github.io/",
+            "name": "כלי קודש",
+            "alternateName": ["Klei Kodesh", "כתבי הקודש", "Kitvei Hakodesh"],
+            "inLanguage": ["he", "en"]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "כתבי הקודש",
+            "alternateName": ["Kitvei Hakodesh", "תוכנת כתבי הקודש"],
+            "description": "ספרייה תורנית שלמה: תנ״ך, ש״ס, מפרשים ופוסקים, עם חיפוש בכל הטקסט, היברו-בוקס, מילון ולוח שנה. כתוכנה עצמאית וכחלונית בתוך וורד.",
+            "applicationCategory": "ReferenceApplication",
+            "operatingSystem": "Windows",
+            "inLanguage": ["he", "en"],
+            "isAccessibleForFree": true,
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "ILS" },
+            "image": "https://kleikodesh.github.io/images/shots/he/light/kitvei-home.png",
+            "url": "https://kleikodesh.github.io/"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "כלי קודש",
+            "alternateName": ["Klei Kodesh", "כלי קודש לוורד"],
+            "description": "תוסף לוורד: כתבי הקודש, עיצוב תורני, ניקוד, חיפוש רגקס ועוד - בחלוניות ליד המסמך.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Windows",
+            "inLanguage": ["he", "en"],
+            "isAccessibleForFree": true,
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "ILS" },
+            "url": "https://kleikodesh.github.io/"
+          }
+        ]
+      }
+    </script>
     <script>
       try {
         var theme = localStorage.getItem("theme");
         if (theme === "dark" || (!theme && matchMedia("(prefers-color-scheme: dark)").matches))
           document.documentElement.classList.add("dark");
+        // Language: the saved choice, else the browser's language (Hebrew, or English for any other).
+        var lang = localStorage.getItem("lang");
+        if (!lang) {
+          var first = ((navigator.languages && navigator.languages[0]) || navigator.language || "he").toLowerCase();
+          lang = first.indexOf("he") === 0 || first.indexOf("iw") === 0 ? "he" : "en";
+        }
+        if (lang === "en") {
+          document.documentElement.lang = "en";
+          document.documentElement.dir = "ltr";
+        }
       } catch (e) {}
     </script>
     <link rel="stylesheet" href="style.css" />
@@ -28,42 +88,43 @@
       <div class="topbar__row">
         <a class="brand" href="index.html">
           <img src="images/kleikodesh-logo.png" alt="" width="28" height="28" />
-          כלי קודש
+          <span data-en="Klei Kodesh">כלי קודש</span>
         </a>
         <ul class="nav" id="nav">
-          <li><a href="index.html#downloads">הורדות נוספות</a></li>
-          <li><a href="index.html#related">פרויקטים קשורים</a></li>
-          <li><a href="#contact" data-open-contact>צור קשר</a></li>
+          <li><a href="index.html#downloads" data-en="Extra downloads">הורדות נוספות</a></li>
+          <li><a href="index.html#related" data-en="Related projects">פרויקטים קשורים</a></li>
+          <li><a href="#contact" data-open-contact data-en="Contact">צור קשר</a></li>
           <li class="nav__mobile"><a href="https://github.com/KleiKodesh/KleiKodeshProject" target="_blank" rel="noopener">GitHub</a></li>
-          <li class="nav__mobile"><a href="https://drive.google.com/drive/folders/1UcAlBJU1nW-uzG8J8DLgETIEnMNhsV3O?usp=sharing" target="_blank" rel="noopener">גוגל דרייב</a></li>
-          <li class="nav__mobile"><a href="https://mitmachim.top/post/966405" target="_blank" rel="noopener">מתמחים</a></li>
-          <li class="nav__mobile"><a href="https://forum.otzaria.org/category/27" target="_blank" rel="noopener">פורום אוצריא</a></li>
+          <li class="nav__mobile"><a href="https://drive.google.com/drive/folders/1UcAlBJU1nW-uzG8J8DLgETIEnMNhsV3O?usp=sharing" target="_blank" rel="noopener" data-en="Google Drive">גוגל דרייב</a></li>
+          <li class="nav__mobile"><a href="https://mitmachim.top/post/966405" target="_blank" rel="noopener" data-en="Mitmachim">מתמחים</a></li>
+          <li class="nav__mobile"><a href="https://forum.otzaria.org/category/27" target="_blank" rel="noopener" data-en="Otzaria forum">פורום אוצריא</a></li>
         </ul>
         <div class="topbar__end">
-          <button class="icon-btn" id="themeToggle" type="button" title="מצב כהה / בהיר" aria-label="מצב כהה / בהיר">
+          <button class="icon-btn lang-btn" id="langToggle" type="button" title="English" aria-label="English" data-en-title="עברית" data-en-aria-label="עברית"><span data-en="עב">EN</span></button>
+          <button class="icon-btn" id="themeToggle" type="button" title="מצב כהה / בהיר" aria-label="מצב כהה / בהיר" data-en-title="Dark / light mode" data-en-aria-label="Dark / light mode">
             <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m0-1.5v-17a8.5 8.5 0 0 1 0 17" />
             </svg>
           </button>
           <div class="topbar__icons">
-            <a class="icon-btn" href="https://github.com/KleiKodesh/KleiKodeshProject" target="_blank" rel="noopener" title="הקוד בגיטהאב" aria-label="GitHub">
+            <a class="icon-btn" href="https://github.com/KleiKodesh/KleiKodeshProject" target="_blank" rel="noopener" title="הקוד בגיטהאב" data-en-title="Code on GitHub" aria-label="GitHub">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
               </svg>
             </a>
-            <a class="icon-btn" href="https://drive.google.com/drive/folders/1UcAlBJU1nW-uzG8J8DLgETIEnMNhsV3O?usp=sharing" target="_blank" rel="noopener" title="הפרויקט בגוגל דרייב" aria-label="Google Drive">
+            <a class="icon-btn" href="https://drive.google.com/drive/folders/1UcAlBJU1nW-uzG8J8DLgETIEnMNhsV3O?usp=sharing" target="_blank" rel="noopener" title="הפרויקט בגוגל דרייב" data-en-title="The project on Google Drive" aria-label="Google Drive">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M7.71,3.5L1.15,15L4.58,21L11.13,9.5M9.73,15L6.3,21H19.42L22.85,15M22.28,14L15.42,2H8.58L8.57,2L15.43,14H22.28Z" />
               </svg>
             </a>
-            <a class="icon-btn" href="https://mitmachim.top/post/966405" target="_blank" rel="noopener" title="הפוסט במתמחים" aria-label="Mitmachim">
+            <a class="icon-btn" href="https://mitmachim.top/post/966405" target="_blank" rel="noopener" title="הפוסט במתמחים" data-en-title="The post on Mitmachim" aria-label="Mitmachim">
               <img src="mitmachim-favicon.ico" alt="" width="20" height="20" />
             </a>
-            <a class="icon-btn" href="https://forum.otzaria.org/category/27" target="_blank" rel="noopener" title="קטגוריית כלי קודש בפורום אוצריא" aria-label="Otzaria Forum">
+            <a class="icon-btn" href="https://forum.otzaria.org/category/27" target="_blank" rel="noopener" title="קטגוריית כלי קודש בפורום אוצריא" data-en-title="Klei Kodesh on the Otzaria forum" aria-label="Otzaria Forum">
               <img src="otzaria-icon.png" alt="" width="20" height="20" />
             </a>
           </div>
-          <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="nav">
+          <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="תפריט" data-en-aria-label="Menu" aria-expanded="false" aria-controls="nav">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
               <path d="M3 6h18M3 12h18M3 18h18" />
             </svg>
@@ -76,19 +137,20 @@
       <section class="hero" id="download">
         <div class="container feature__row">
           <div class="feature__text">
-            <h1>פרוייקט כלי קודש</h1>
-            <p class="hero__lead">כל מה שעורך תורני צריך — בוורד ומחוצה לו.<br />נגישות וקלילות ברמה אחרת.</p>
+            <h1 data-en="The Klei Kodesh Project">פרוייקט כלי קודש</h1>
+            <p class="hero__lead" data-en="A toolbox for the Torah computer — in Word and beyond.&lt;br /&gt;Accessible and light, on another level.">ארגז כלים למחשב התורני — בוורד ומחוצה לו.<br />נגישות וקלילות ברמה אחרת.</p>
             <!-- The three parts of the product. The slideshow lights up the part it is showing;
                  clicking a part jumps to its pictures (script.js). -->
             <ul class="parts">
-              <li data-part="addin"><img src="images/word.png" alt="" width="28" height="28" /><b>תוסף לוורד</b><span>חלוניות ליד המסמך</span></li>
-              <li data-part="kitvei"><img src="images/kitvei-logo.png" alt="" width="28" height="28" /><b>כתבי הקודש</b><span>ספרייה תורנית</span></li>
-              <li data-part="tutor"><img src="images/tutor.svg" alt="" width="28" height="28" /><b>מאמן הקלדה</b><span>בעברית</span></li>
+              <li data-part="addin"><img src="images/word.png" alt="" width="28" height="28" /><b data-en="Word add-in">תוסף לוורד</b><span data-en="Panes beside the document">חלוניות ליד המסמך</span></li>
+              <li data-part="kitvei"><img src="images/kitvei-logo.png" alt="" width="28" height="28" /><b data-en="Kitvei Hakodesh">כתבי הקודש</b><span data-en="A Torah library">ספרייה תורנית</span></li>
+              <li data-part="tutor"><img src="images/tutor.svg" alt="" width="28" height="28" /><b data-en="Typing Tutor">מאמן הקלדה</b><span data-en="In Hebrew">בעברית</span></li>
             </ul>
             <a
               href="https://github.com/KleiKodesh/KleiKodeshProject/releases/download/v10.6.0/KleiKodeshSetup-v10.6.0.exe"
               data-download-button="main"
               class="btn btn--big"
+              data-en="Click to download"
             >להורדה לחץ כאן</a>
             <!-- Show and tell: what the picture beside it shows (script.js fills it). -->
             <div class="tell" aria-live="polite">
@@ -104,51 +166,69 @@
         </div>
       </section>
 
+
     </main>
 
     <footer class="footer">
       <div class="container">
         <div class="footer__cols">
           <div id="downloads">
-            <h2>הורדות נוספות</h2>
+            <h2 data-en="Extra downloads">הורדות נוספות</h2>
             <ul>
-              <li><a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" target="_blank" rel="noopener">טיפים לעבודה נכונה בוורד</a></li>
-              <li><a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" target="_blank" rel="noopener">מדריך חיפוש והחלפה בוורד</a></li>
-              <li><a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" target="_blank" rel="noopener">תוסף עיצוב תורני (גרסה נפרדת)</a></li>
-              <li><a href="https://drive.google.com/drive/folders/1UcAlBJU1nW-uzG8J8DLgETIEnMNhsV3O?usp=sharing" target="_blank" rel="noopener">גוגל דרייב</a></li>
+              <li><a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" target="_blank" rel="noopener" data-en="Tips for working well in Word">טיפים לעבודה נכונה בוורד</a></li>
+              <li><a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" target="_blank" rel="noopener" data-en="Find and replace in Word: a guide">מדריך חיפוש והחלפה בוורד</a></li>
+              <li><a href="https://github.com/KleiKodesh/kleikodesh.github.io/releases/tag/Files" target="_blank" rel="noopener" data-en="Torah Design add-in (standalone)">תוסף עיצוב תורני (גרסה נפרדת)</a></li>
+              <li><a href="https://drive.google.com/drive/folders/1UcAlBJU1nW-uzG8J8DLgETIEnMNhsV3O?usp=sharing" target="_blank" rel="noopener" data-en="Google Drive">גוגל דרייב</a></li>
             </ul>
           </div>
           <div id="related">
-            <h2>פרויקטים קשורים</h2>
+            <h2 data-en="Related projects">פרויקטים קשורים</h2>
             <ul>
-              <li><a href="https://www.otzaria.org" target="_blank" rel="noopener">אוצריא</a></li>
-              <li><a href="https://zayitapp.com" target="_blank" rel="noopener">זית</a></li>
+              <li><a href="https://www.otzaria.org" target="_blank" rel="noopener" data-en="Otzaria">אוצריא</a></li>
+              <li><a href="https://zayitapp.com" target="_blank" rel="noopener" data-en="Zayit">זית</a></li>
             </ul>
           </div>
           <div>
-            <h2>צור קשר</h2>
+            <h2 data-en="Contact">צור קשר</h2>
             <ul>
-              <li><a href="#contact" data-open-contact>שליחת הודעה</a></li>
-              <li><a href="https://github.com/KleiKodesh/KleiKodeshProject/issues" target="_blank" rel="noopener">דיווח על באג</a></li>
+              <li><a href="#contact" data-open-contact data-en="Send a message">שליחת הודעה</a></li>
+              <li><a href="https://github.com/KleiKodesh/KleiKodeshProject/issues" target="_blank" rel="noopener" data-en="Report a bug">דיווח על באג</a></li>
             </ul>
           </div>
         </div>
-        <p>הפרויקט חינמי ונכתב בקוד פתוח לזיכוי הרבים. הנכם מוזמנים להפיץ, לתרום ולהציע שיפורים ב-<a href="https://github.com/KleiKodesh" target="_blank" rel="noopener">GitHub</a>.</p>
+        <p data-en="The project is free and open source, for the benefit of the public. You are welcome to share it, contribute and suggest improvements on &lt;a href=&quot;https://github.com/KleiKodesh&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.">הפרויקט חינמי ונכתב בקוד פתוח לזיכוי הרבים. הנכם מוזמנים להפיץ, לתרום ולהציע שיפורים ב-<a href="https://github.com/KleiKodesh" target="_blank" rel="noopener">GitHub</a>.</p>
       </div>
     </footer>
+
+    <!-- What users say: a thin fixed strip at the bottom, like the top bar. The anonymous
+         quotes run one after another as a ticker (script.js duplicates the track for a
+         seamless loop). -->
+    <aside class="quotes" aria-label="מה אומרים המשתמשים" data-en-aria-label="What users say">
+      <div class="quotes__track">
+        <span class="quotes__item" data-en="A real find for the Torah world — a unique tool with no substitute.">"מציאה" ותגלית לעולם התורה — כלי עזר מיוחד שאין לו תחליף.</span><span class="quotes__sep" aria-hidden="true">·</span>
+        <span class="quotes__item" data-en="Friends who know nothing about computers keep thanking me for the time and headaches it saves.">חברים שלא מבינים במחשבים לא מפסיקים להודות על הזמן וכאבי הראש שזה חוסך.</span><span class="quotes__sep" aria-hidden="true">·</span>
+        <span class="quotes__item" data-en="It is far beyond a Word add-in by now. I use it all the time!">זה כבר הרבה מעבר לרמה של תוסף לוורד. משתמש בזה כל הזמן!</span><span class="quotes__sep" aria-hidden="true">·</span>
+        <span class="quotes__item" data-en="Saves a great deal of time and makes study and editing wonderfully efficient.">חוסך זמן רב ביותר, ומייעל את הלימוד ועבודות העריכה בצורה נפלאה.</span><span class="quotes__sep" aria-hidden="true">·</span>
+        <span class="quotes__item" data-en="Beautiful Torah in a beautiful vessel! Accessible and enlightening!">תורה נאה בכלי נאה! נגיש, ומאיר עיניים!</span><span class="quotes__sep" aria-hidden="true">·</span>
+        <span class="quotes__item" data-en="At last I found the Word add-in I was always missing.">סוף סוף מצאתי תוסף וורד שתמיד היה חסר לי.</span><span class="quotes__sep" aria-hidden="true">·</span>
+        <span class="quotes__item" data-en="The new version is wonderful — a great interface and much faster search.">הגרסה החדשה נפלאה — ממשק מדהים וחיפוש מהיר הרבה יותר.</span><span class="quotes__sep" aria-hidden="true">·</span>
+        <span class="quotes__item" data-en="Clean and amazing, and very comfortable for study.">נקי ומדהים, ומאוד נוח ללימוד.</span><span class="quotes__sep" aria-hidden="true">·</span>
+        <span class="quotes__item" data-en="Beautiful, pleasant to look at and easy on the eyes — no words for how much I enjoy it.">יפה, נחמד למראה וטוב לעיניים — אין מילים לתאר את ההנאה.</span><span class="quotes__sep" aria-hidden="true">·</span>
+      </div>
+    </aside>
 
     <!-- Contact form window (sent through Formspree). Opened by [data-open-contact]. -->
     <dialog class="contact-dialog" id="contact">
       <form class="contact" action="https://formspree.io/f/mnndrdyq" method="POST">
         <div class="contact__head">
-          <h2>צור קשר</h2>
-          <button type="button" class="icon-btn" data-close-contact aria-label="סגירה">✕</button>
+          <h2 data-en="Contact">צור קשר</h2>
+          <button type="button" class="icon-btn" data-close-contact aria-label="סגירה" data-en-aria-label="Close">✕</button>
         </div>
         <input type="hidden" name="_language" value="he" />
-        <input type="text" name="name" placeholder="שם" required />
-        <input type="email" name="email" placeholder="אימייל" required />
-        <textarea name="message" rows="5" placeholder="הודעה" required></textarea>
-        <button type="submit" class="btn">שליחה</button>
+        <input type="text" name="name" placeholder="שם" data-en-placeholder="Name" required />
+        <input type="email" name="email" placeholder="אימייל" data-en-placeholder="Email" required />
+        <textarea name="message" rows="5" placeholder="הודעה" data-en-placeholder="Message" required></textarea>
+        <button type="submit" class="btn" data-en="Send">שליחה</button>
         <p class="contact__status" role="status"></p>
       </form>
     </dialog>
@@ -157,24 +237,24 @@
          alt = title, data-desc = description, data-part = which part it belongs to,
          data-shot = file name in images/shots/<he|en>/<light|dark>/ (script.js picks the set). -->
     <div id="slides" hidden>
-      <img data-part="kitvei" data-desc="ספרייה תורנית שלמה: תנ״ך, ש״ס, מפרשים ופוסקים, עם חיפוש בכל הטקסט, היברו-בוקס, מילון ולוח שנה. זמינה כחלונית בתוך וורד וכתוכנה עצמאית." data-shot="kitvei-home" alt="כתבי הקודש" width="600" height="678" />
-      <img data-part="kitvei" data-desc="ספר פתוח עם המפרשים לצידו: רש״י, אבן עזרא ושאר המפרשים על כל פסוק, בלחיצה." data-shot="kitvei-book" alt="כתבי הקודש — עיון בספר" width="600" height="678" />
-      <img data-part="kitvei" data-desc="חיפוש מהיר בכל הספרים בבת אחת, עם המילים שנמצאו מודגשות בתוצאות." data-shot="kitvei-search" alt="כתבי הקודש — חיפוש בכל הספרייה" width="600" height="678" />
-      <img data-part="kitvei" data-desc="פותח מסמכי Word ישירות בתוכנה, בתצוגה נקייה ונוחה לקריאה." data-shot="kitvei-docx" alt="כתבי הקודש — מציג מסמכים" width="600" height="678" />
-      <img data-part="kitvei" data-desc="ספרי PDF נפתחים בתוכנה, עם כלי סימון והערות." data-shot="kitvei-pdf" alt="כתבי הקודש — מציג PDF" width="600" height="678" />
-      <img data-part="kitvei" data-desc="חיפוש בקטלוג היברו-בוקס לפי שם, מחבר ונושא, והורדת הספר בלחיצה." data-shot="kitvei-hebrewbooks" alt="כתבי הקודש — היברו-בוקס" width="600" height="678" />
-      <img data-part="kitvei" data-desc="פירוש מילים מכמה מילונים ומפרשים יחד, עם מילים קשורות." data-shot="kitvei-dictionary" alt="כתבי הקודש — מילון" width="600" height="678" />
-      <img data-part="kitvei" data-desc="לוח שנה עברי עם זמני היום והלימוד היומי לכל יום." data-shot="kitvei-calendar" alt="כתבי הקודש — לוח שנה" width="600" height="678" />
-      <img data-part="addin" data-desc="יישור פסקאות, מספר שורות מינימלי, ומילה ראשונה בסגנון משלכם — המסמך נראה כמו ספר." data-shot="pane-docdesign" alt="עיצוב תורני — פסקאות" width="600" height="678" />
-      <img data-part="addin" data-desc="איזון טורים בלחיצה: הטורים נגמרים באותו גובה, עם שליטה על המרווח בין הקטעים." data-shot="pane-docdesign-columns" alt="עיצוב תורני — איזון טורים" width="600" height="678" />
-      <img data-part="addin" data-desc="מרווח לפני ואחרי, בין שורות, מילים ואותיות, ומתיחת אותיות — בצעדים קטנים, עם חזרה לברירת המחדל." data-shot="pane-docdesign-spacing" alt="עיצוב תורני — מרווחים" width="600" height="678" />
-      <img data-part="addin" data-desc="מסמנים טקסט ומקבלים אותו מנוקד. בוחרים סוג טקסט ומדלגים על סגנונות שלא צריך." data-shot="pane-nakdan" alt="ניקוד" width="600" height="678" />
-      <img data-part="addin" data-desc="חיפוש והחלפה לפי תבניות, גם לפי עיצוב, גופן וסגנון — הרבה מעבר לחיפוש של וורד." data-shot="pane-regex" alt="חיפוש רגקס" width="600" height="678" />
-      <img data-part="addin" data-desc="המכלול, דיקטה, אוצר החכמה ואתרים תורניים נוספים — בחלונית לצד המסמך." data-shot="pane-websites" alt="דרך האתרים" width="600" height="678" />
-      <img data-part="addin" data-desc="אנציקלופדיות ואתרים שמורים במחשב, לעבודה גם בלי אינטרנט." data-shot="pane-kiwix" alt="קיוויקס" width="600" height="678" />
-      <img data-part="tutor" data-desc="מאמן הקלדה בעברית בצורה בוגרת וחדשנית: שלב אחר שלב, עם מקלדת וידיים על המסך. עובד גם בלי אינטרנט." data-shot="tutor" alt="מאמן הקלדה בעברית" width="600" height="678" />
+      <img data-part="kitvei" data-desc="ספרייה תורנית שלמה: תנ״ך, ש״ס, מפרשים ופוסקים, עם חיפוש בכל הטקסט, היברו-בוקס, מילון ולוח שנה. זמינה כחלונית בתוך וורד וכתוכנה עצמאית." data-title-en="Kitvei Hakodesh" data-desc-en="A complete Torah library: Tanakh, Shas, commentaries and halachic works, with full-text search, HebrewBooks, a dictionary and a calendar. Available as a pane inside Word and as a standalone app." data-shot="kitvei-home" alt="כתבי הקודש" width="600" height="678" />
+      <img data-part="kitvei" data-desc="ספר פתוח עם המפרשים לצידו: רש״י, אבן עזרא ושאר המפרשים על כל פסוק, בלחיצה." data-title-en="Kitvei Hakodesh — reading a book" data-desc-en="An open book with its commentaries beside it: Rashi, Ibn Ezra and the other commentaries on every verse, one click away." data-shot="kitvei-book" alt="כתבי הקודש — עיון בספר" width="600" height="678" />
+      <img data-part="kitvei" data-desc="חיפוש מהיר בכל הספרים בבת אחת, עם המילים שנמצאו מודגשות בתוצאות." data-title-en="Kitvei Hakodesh — search the whole library" data-desc-en="Fast search across every book at once, with the matching words highlighted in the results." data-shot="kitvei-search" alt="כתבי הקודש — חיפוש בכל הספרייה" width="600" height="678" />
+      <img data-part="kitvei" data-desc="פותח מסמכי Word ישירות בתוכנה, בתצוגה נקייה ונוחה לקריאה." data-title-en="Kitvei Hakodesh — document viewer" data-desc-en="Word documents open right in the app, in a clean view that is easy to read." data-shot="kitvei-docx" alt="כתבי הקודש — מציג מסמכים" width="600" height="678" />
+      <img data-part="kitvei" data-desc="ספרי PDF נפתחים בתוכנה, עם כלי סימון והערות." data-title-en="Kitvei Hakodesh — PDF viewer" data-desc-en="PDF books open in the app, with marking and note tools." data-shot="kitvei-pdf" alt="כתבי הקודש — מציג PDF" width="600" height="678" />
+      <img data-part="kitvei" data-desc="חיפוש בקטלוג היברו-בוקס לפי שם, מחבר ונושא, והורדת הספר בלחיצה." data-title-en="Kitvei Hakodesh — HebrewBooks" data-desc-en="Search the HebrewBooks catalog by title, author and subject, and download a book with one click." data-shot="kitvei-hebrewbooks" alt="כתבי הקודש — היברו-בוקס" width="600" height="678" />
+      <img data-part="kitvei" data-desc="פירוש מילים מכמה מילונים ומפרשים יחד, עם מילים קשורות." data-title-en="Kitvei Hakodesh — dictionary" data-desc-en="Word meanings from several dictionaries and commentaries together, with related words." data-shot="kitvei-dictionary" alt="כתבי הקודש — מילון" width="600" height="678" />
+      <img data-part="kitvei" data-desc="לוח שנה עברי עם זמני היום והלימוד היומי לכל יום." data-title-en="Kitvei Hakodesh — calendar" data-desc-en="A Hebrew calendar with the halachic times and the daily learning for every day." data-shot="kitvei-calendar" alt="כתבי הקודש — לוח שנה" width="600" height="678" />
+      <img data-part="addin" data-desc="יישור פסקאות, מספר שורות מינימלי, ומילה ראשונה בסגנון משלכם — המסמך נראה כמו ספר." data-title-en="Torah formatting — paragraphs" data-desc-en="Paragraph alignment, a minimum number of lines and a first word in your own style: the document looks like a printed sefer." data-shot="pane-docdesign" alt="עיצוב תורני — פסקאות" width="600" height="678" />
+      <img data-part="addin" data-desc="איזון טורים בלחיצה: הטורים נגמרים באותו גובה, עם שליטה על המרווח בין הקטעים." data-title-en="Torah formatting — column balancing" data-desc-en="Column balancing in one click: the columns end at the same height, with control over the space between sections." data-shot="pane-docdesign-columns" alt="עיצוב תורני — איזון טורים" width="600" height="678" />
+      <img data-part="addin" data-desc="מרווח לפני ואחרי, בין שורות, מילים ואותיות, ומתיחת אותיות — בצעדים קטנים, עם חזרה לברירת המחדל." data-title-en="Torah formatting — spacing" data-desc-en="Space before and after, between lines, words and letters, and letter stretching, in small steps with a reset to the default." data-shot="pane-docdesign-spacing" alt="עיצוב תורני — מרווחים" width="600" height="678" />
+      <img data-part="addin" data-desc="מסמנים טקסט ומקבלים אותו מנוקד. בוחרים סוג טקסט ומדלגים על סגנונות שלא צריך." data-title-en="Nakdan" data-desc-en="Select text and get it vocalized. Choose the kind of text and skip styles you do not need." data-shot="pane-nakdan" alt="ניקוד" width="600" height="678" />
+      <img data-part="addin" data-desc="חיפוש והחלפה לפי תבניות, גם לפי עיצוב, גופן וסגנון — הרבה מעבר לחיפוש של וורד." data-title-en="Regex search" data-desc-en="Find and replace by pattern, also by formatting, font and style: far beyond the search built into Word." data-shot="pane-regex" alt="חיפוש רגקס" width="600" height="678" />
+      <img data-part="addin" data-desc="המכלול, דיקטה, אוצר החכמה ואתרים תורניים נוספים — בחלונית לצד המסמך." data-title-en="Websites" data-desc-en="HaMichlol, Dicta, Otzar HaChochma and more Torah websites, in a pane beside the document." data-shot="pane-websites" alt="דרך האתרים" width="600" height="678" />
+      <img data-part="addin" data-desc="אנציקלופדיות ואתרים שמורים במחשב, לעבודה גם בלי אינטרנט." data-title-en="Kiwix" data-desc-en="Encyclopedias and websites saved on your computer, to work even without internet." data-shot="pane-kiwix" alt="קיוויקס" width="600" height="678" />
+      <img data-part="tutor" data-desc="מאמן הקלדה בעברית בצורה בוגרת וחדשנית: שלב אחר שלב, עם מקלדת וידיים על המסך. עובד גם בלי אינטרנט." data-title-en="Hebrew Typing Tutor" data-desc-en="A Hebrew typing tutor, mature and innovative: step by step, with an on-screen keyboard and hands. Works offline." data-shot="tutor" alt="מאמן הקלדה בעברית" width="600" height="678" />
     </div>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=9"></script>
   </body>
 </html>

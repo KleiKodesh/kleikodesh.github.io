@@ -288,6 +288,9 @@ img { display: block; max-width: 100%; }
   content: ""; position: absolute; inset: 0;
   background: var(--accent); transform-origin: right; transform: scaleX(0);
 }
+[dir="ltr"] .reel__dots button.is-current::after {
+  transform-origin: left;
+}
 .reel__dots.is-entering button.is-current::after { animation: reel-fill var(--slide-ms, 6000ms) linear both; }
 .reel.is-paused .reel__dots button.is-current::after { animation-play-state: paused; }
 @keyframes reel-fill { to { transform: scaleX(1); } }
@@ -379,4 +382,56 @@ img { display: block; max-width: 100%; }
   .hero .reel { order: 1; margin-top: 16px; }
   .hero .tell { order: 2; margin-top: 0; }
   .hero .btn--big { justify-self: center; }
+}
+
+/* ---------- Language button (shows the language it switches to, like the installer) ---------- */
+
+.lang-btn span { font-size: 13px; font-weight: 600; line-height: 1; }
+
+/* ---------- What users say: thin fixed strip at the bottom, mirroring the top bar ---------- */
+
+.quotes {
+  position: fixed; inset-inline: 0; bottom: 0; z-index: 40;
+  display: flex; align-items: center; overflow: hidden;
+  height: 40px;
+  background: var(--bg); border-top: 1px solid var(--border);
+}
+body { padding-bottom: 40px; } /* the strip never covers the footer */
+
+/* The quotes run one after another like a train. script.js appends a copy of the track's
+   content, so moving it by half its width loops seamlessly; --ticker-s sets the speed. */
+.quotes__track {
+  display: flex; align-items: center; flex: none;
+  white-space: nowrap; font-size: 13.5px; color: var(--muted);
+  animation: ticker var(--ticker-s, 120s) linear infinite;
+}
+.quotes:hover .quotes__track { animation-play-state: paused; }
+.quotes__sep { padding: 0 16px; color: var(--accent); }
+@keyframes ticker { to { transform: translateX(50%); } }          /* Hebrew: moves to the right */
+[dir="ltr"] .quotes__track { animation-name: ticker-ltr; }
+@keyframes ticker-ltr { to { transform: translateX(-50%); } }    /* English: moves to the left */
+
+@media (prefers-reduced-motion: reduce) {
+  .quotes__track { animation: none; }
+}
+
+
+/* ---------- Fit the whole hero on short screens (small laptops) ----------
+   Wide screens only: sizes follow the viewport height, so the slideshow, the text and its
+   description fit between the top bar (48px) and the quote strip (40px) in one view.
+   On tall screens every value reaches its normal size. */
+@media (min-width: 901px) {
+  .hero { padding: clamp(10px, 3.5vh, 32px) 0 clamp(12px, 4vh, 64px); }
+  .hero .feature__row { gap: clamp(32px, 6vh, 80px); }
+  .hero h1 { font-size: clamp(30px, 6.4vh, 52px); }
+  .hero__lead { margin: clamp(6px, 1.6vh, 16px) 0 clamp(12px, 2.4vh, 24px); font-size: clamp(15px, 2.5vh, 20px); }
+  .parts { margin-bottom: clamp(14px, 3.2vh, 28px); }
+  .parts li { padding: clamp(5px, 1.2vh, 10px) clamp(10px, 1.4vw, 14px); }
+  .parts img { width: clamp(22px, 3.4vh, 28px); height: clamp(22px, 3.4vh, 28px); }
+  .btn--big { padding: clamp(7px, 1.3vh, 11px) 32px; font-size: clamp(15px, 2.1vh, 17px); }
+  .tell { margin-top: clamp(12px, 3vh, 32px); padding-top: clamp(10px, 2.4vh, 24px); min-height: 0; }
+  .tell__title { font-size: clamp(17px, 2.8vh, 22px); }
+  .tell__text { font-size: clamp(14px, 2.1vh, 17px); line-height: 1.5; }
+  /* The picture keeps its 600:678 shape and is never taller than the space left for it. */
+  .reel { width: min(400px, calc((100svh - 48px - 40px - 2 * clamp(10px, 3.5vh, 32px) - 30px) * 600 / 678)); }
 }
