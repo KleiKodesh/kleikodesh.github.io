@@ -1,76 +1,382 @@
-/* Minimal custom CSS - Most styling is handled by Tailwind CSS */
+/* Klei Kodesh site — same look as the installer (Build/installer-rs/ui/theme.slint):
+   plain white, Segoe UI, light large titles, thin borders, one blue accent.
+   Layout: one idea per section, one big screenshot per idea, lots of air.
+   Dark mode = the "dark" class on <html> (set in the page head, toggled by script.js). */
 
-/* RTL support */
-html {
-    scroll-behavior: smooth;
+:root {
+  --bg: #ffffff;
+  --header: #f3f3f3;
+  --border: #e0e0e0;
+  --text: #1b1b1b;
+  --muted: #616161;
+  --accent: #0078d4;
+  --accent-hover: #106ebe;
+  --on-accent: #ffffff;
+  --shot-width: 340px;
+  color-scheme: light;
 }
+
+html.dark {
+  --bg: #202020;
+  --header: #2b2b2b;
+  --border: #3a3a3a;
+  --text: #f3f3f3;
+  --muted: #a0a0a0;
+  --accent: #60cdff;
+  --accent-hover: #8ad8ff;
+  --on-accent: #000000;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 56px; }
 
 body {
-    direction: rtl;
-    font-family: 'Rubik', 'Segoe UI', system-ui, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Hero logo animation - subtle float */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { display: block; max-width: 100%; }
+
+.container { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+/* ---------- Top bar: edge to edge, like an app title bar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
 }
 
-header img[alt="Klei Kodesh Logo"] {
-    animation: float 4s ease-in-out infinite;
+.topbar__row { display: flex; align-items: center; gap: 16px; height: 48px; padding: 0 12px; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+.brand img { width: 28px; height: 28px; }
+
+.nav { display: flex; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.nav a { display: block; padding: 6px 10px; border-radius: 6px; color: var(--muted); white-space: nowrap; }
+.nav a:hover { color: var(--text); text-decoration: none; }
+.nav a[aria-current="page"] { color: var(--text); }
+.nav__mobile { display: none; }
+
+.topbar__end { display: flex; align-items: center; gap: 2px; margin-inline-start: auto; }
+.topbar__icons { display: flex; align-items: center; gap: 2px; }
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.icon-btn:hover { background: var(--header); color: var(--text); }
+.icon-btn img { width: 20px; height: 20px; }
+
+.menu-btn { display: none; }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+}
+.btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); text-decoration: none; }
+.btn--big { padding: 11px 32px; font-size: 17px; }
+
+.link-more { font-weight: 600; }
+
+/* ---------- Hero: title, one sentence, one button (a picture is optional) ---------- */
+
+/* Hero: the same row as the features below - text beside one big picture. */
+.hero { padding: 32px 0 96px; }
+
+.hero__logo { width: 72px; height: 72px; margin: 0 auto 20px; }
+
+.hero h1 { margin: 0; font-size: 52px; font-weight: 300; line-height: 1.15; }
+
+.hero__lead {
+  max-width: 560px;
+  margin: 16px 0 24px;
+  color: var(--muted);
+  font-size: 20px;
 }
 
-/* Dark mode images */
-.dark img:not(.hero-logo) {
-    opacity: 0.9;
+.hero__note { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+
+.hero .shot { margin: 64px auto 0; }
+
+/* ---------- Feature rows: text beside one big screenshot, sides alternate ---------- */
+
+.feature { padding: 96px 0; border-top: 1px solid var(--border); }
+
+.feature__row {
+  display: grid;
+  grid-template-columns: 1fr var(--shot-width);
+  gap: 80px;
+  align-items: center;
+}
+.feature--flip .feature__text { order: 2; }
+
+.feature h2,
+.closing h2 { margin: 0; font-size: 36px; font-weight: 300; line-height: 1.2; }
+
+.feature p { max-width: 440px; margin: 16px 0 0; color: var(--muted); font-size: 18px; }
+.feature .link-more { display: inline-block; margin-top: 20px; }
+
+/* Two side-by-side products, each with its own picture. */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 56px; }
+.pair__item { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.pair__item h3 { display: flex; align-items: center; gap: 8px; margin: 28px 0 0; font-size: 22px; font-weight: 400; }
+.pair__item h3 img { width: 28px; height: 28px; }
+.pair__item p { margin: 8px auto 0; }
+
+.feature--center { text-align: center; }
+.feature--center p { margin-inline: auto; }
+
+/* Short plain list, no boxes. */
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 48px;
+  max-width: 880px;
+  margin: 48px auto 0;
+  padding: 0;
+  list-style: none;
+  text-align: start;
+}
+.checklist b { display: block; font-weight: 600; }
+.checklist span { color: var(--muted); font-size: 15px; }
+
+/* All screenshots are 600 x 678; the box keeps that exact ratio, nothing is cropped. */
+.shot {
+  display: block;
+  width: 100%;
+  max-width: var(--shot-width);
+  aspect-ratio: 600 / 678;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--header);
+  cursor: zoom-in;
+}
+.shot img { width: 100%; height: 100%; }
+
+/* ---------- Closing call to action ---------- */
+
+.closing { padding: 96px 0; border-top: 1px solid var(--border); text-align: center; }
+.closing p { margin: 12px 0 32px; color: var(--muted); font-size: 18px; }
+
+/* ---------- Footer: every secondary link lives here, quietly ---------- */
+
+.footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  background: var(--header);
+  color: var(--muted);
+  font-size: 14px;
+}
+.footer__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 48px; margin-bottom: 24px; }
+.footer h2 { margin: 0 0 6px; color: var(--text); font-size: 14px; font-weight: 600; }
+.footer ul { margin: 0; padding: 0; list-style: none; }
+.footer li { padding: 2px 0; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 16px; }
+.footer li a { color: var(--muted); }
+.footer li a:hover { color: var(--text); }
+.footer p { margin: 0; }
+
+/* ---------- The slideshow's pictures (hidden) ---------- */
+
+#slides { display: none !important; }
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 900px) {
+  .menu-btn { display: inline-flex; }
+  .topbar__icons { display: none; }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 48px;
+    inset-inline: 0;
+    flex-direction: column;
+    padding: 8px 12px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav.open { display: flex; }
+  .nav__mobile { display: block; }
+
+  .hero { padding: 24px 0 64px; }
+  .hero h1 { font-size: 40px; }
+  .hero__lead { font-size: 18px; margin-inline: auto; }
+  .hero .shot { margin-top: 48px; }
+
+  .feature, .closing { padding: 64px 0; }
+  .feature__row { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .feature--flip .feature__text { order: 0; }
+  .feature p { margin-inline: auto; }
+  .feature__row .shot { margin: 0 auto; }
+  .feature h2, .closing h2 { font-size: 30px; }
+
+  .pair { grid-template-columns: 1fr; gap: 56px; }
+  .checklist { grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+  .footer__cols { grid-template-columns: 1fr 1fr; }
 }
 
-/* Gallery hidden container for PhotoSwipe */
-#gallery {
-    display: none !important;
+@media (max-width: 480px) {
+  .checklist, .footer__cols { grid-template-columns: 1fr; }
 }
 
-/* PhotoSwipe customization */
-.pswp {
-    z-index: 3000;
-}
-
-.pswp__bg {
-    background-color: rgb(250 250 250);
-    opacity: 0.98;
-}
-
-.dark .pswp__bg {
-    background-color: rgb(10 10 10);
-}
-
-/* Mobile menu toggle animation */
-@media (max-width: 768px) {
-    #navMenu {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    #navMenu.active {
-        max-height: 350px;
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
-}
-
-/* Accessibility - Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Hero reel: every screenshot in turn, like the installer's gallery card ---------- */
+
+.reel { width: var(--shot-width); justify-self: center; text-align: center; }
+
+/* Picture: slides in from the reading side and settles; leaves with a short fade. */
+.reel__frame.is-entering img { animation: reel-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.reel__frame.is-leaving img { opacity: 0; transform: scale(0.98); transition: opacity 0.3s ease, transform 0.3s ease; }
+@keyframes reel-in {
+  from { opacity: 0; transform: translateX(-32px) scale(1.03); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Dots: the current one is a bar that fills up while the picture is shown. */
+.reel__dots { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
+.reel__dots button {
+  position: relative; overflow: hidden;
+  width: 7px; height: 7px; padding: 0; border: 0; border-radius: 4px;
+  background: var(--border); cursor: pointer;
+  transition: width 0.3s ease;
+}
+.reel__dots button.is-current { width: 32px; }
+.reel__dots button.is-current::after {
+  content: ""; position: absolute; inset: 0;
+  background: var(--accent); transform-origin: right; transform: scaleX(0);
+}
+.reel__dots.is-entering button.is-current::after { animation: reel-fill var(--slide-ms, 6000ms) linear both; }
+.reel.is-paused .reel__dots button.is-current::after { animation-play-state: paused; }
+@keyframes reel-fill { to { transform: scaleX(1); } }
+
+/* Wide view only: on narrow screens the hero is just the text. */
+@media (max-width: 900px) {
+  .reel { display: none; }
+}
+
+/* ---------- Slideshow page: the hero is the page ---------- */
+
+.hero { padding: 32px 0 64px; }
+.reel { width: 400px; }
+.reel .shot { max-width: none; margin: 0; cursor: default; }
+
+@media (max-width: 900px) {
+  .hero { padding: 24px 0 48px; }
+  .reel { display: block; width: 260px; margin: 0 auto; }
+}
+
+/* ---------- Show and tell: what the current picture shows, under the hero text ---------- */
+
+.tell { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); max-width: 440px; min-height: 7.5em; }
+.tell__title { margin: 0; font-size: 22px; font-weight: 400; }
+.tell__text { margin: 8px 0 0; color: var(--muted); font-size: 17px; line-height: 1.6; }
+
+/* Title then description rise in after the picture; both fade out with it. */
+.tell.is-entering .tell__title { animation: tell-in 0.6s 0.15s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.tell.is-entering .tell__text  { animation: tell-in 0.6s 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.tell.is-leaving > * { opacity: 0; transition: opacity 0.25s ease; }
+@keyframes tell-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 900px) {
+  .tell { margin-inline: auto; }
+}
+
+/* ---------- The three parts, under the hero lead; the one on screen is lit ---------- */
+
+.parts { display: flex; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none; flex-wrap: wrap; }
+.parts li {
+  display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: center;
+  padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px;
+  cursor: pointer; transition: border-color 0.2s ease, background 0.2s ease;
+}
+.parts li:hover { border-color: var(--muted); }
+.parts li.is-current { border-color: var(--accent); background: var(--accent-bg, rgba(0, 120, 212, 0.06)); }
+.parts img { grid-row: span 2; width: 28px; height: 28px; }
+.parts b { font-weight: 600; font-size: 15px; line-height: 1.3; }
+.parts span { color: var(--muted); font-size: 13px; line-height: 1.3; }
+
+@media (max-width: 900px) {
+  .parts { justify-content: center; }
+}
+
+/* Contact window (native <dialog>) with the Formspree form. */
+
+.contact-dialog {
+  width: min(420px, calc(100vw - 32px)); padding: 20px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--bg); color: var(--text);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+.contact-dialog::backdrop { background: rgba(0, 0, 0, 0.35); }
+.contact { display: grid; gap: 10px; }
+.contact__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.contact__head h2 { margin: 0; font-size: 22px; font-weight: 400; }
+.contact input,
+.contact textarea {
+  width: 100%; padding: 8px 10px; font: inherit; font-size: 15px;
+  color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 6px; resize: vertical;
+}
+.contact input:focus,
+.contact textarea:focus { outline: none; border-color: var(--accent); }
+.contact .btn { justify-self: start; }
+.contact__status { margin: 0; min-height: 1.4em; font-size: 14px; color: var(--muted); }
+.contact__status.is-ok { color: #107c10; }
+.contact__status.is-error { color: #c42b1c; }
+
+/* Small screens: the picture sits right above its description (show, then tell). The text
+   column dissolves into the hero grid so the reel can be ordered between its parts. */
+@media (max-width: 900px) {
+  .hero .feature__text { display: contents; }
+  .hero .feature__row { gap: 16px; }
+  .hero .feature__row > * { order: 0; }
+  .hero .reel { order: 1; margin-top: 16px; }
+  .hero .tell { order: 2; margin-top: 0; }
+  .hero .btn--big { justify-self: center; }
 }

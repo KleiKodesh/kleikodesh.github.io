@@ -1,225 +1,30 @@
-// Navigation Toggle
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
+// The site script (index.html).
+// The saved theme is applied by a tiny inline script in each page's <head> (no flash);
+// this file only wires the buttons.
 
-if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        
-        // Animate hamburger icon
-        const spans = navToggle.querySelectorAll('span');
-        if (navMenu.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translateY(8px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
-        } else {
-            spans[0].style.transform = '';
-            spans[1].style.opacity = '';
-            spans[2].style.transform = '';
-        }
-    });
-    
-    // Close menu when clicking on a link
-    const navLinks = navMenu.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            const spans = navToggle.querySelectorAll('span');
-            spans[0].style.transform = '';
-            spans[1].style.opacity = '';
-            spans[2].style.transform = '';
-        });
-    });
-}
+const root = document.documentElement;
 
-// Scroll Progress Bar
-const scrollProgress = document.getElementById('scrollProgress');
-
-function updateScrollProgress() {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Calculate scroll percentage
-    const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
-    
-    // Update progress bar width
-    if (scrollProgress) {
-        scrollProgress.style.width = scrollPercentage + '%';
-    }
-}
-
-// Update on scroll
-window.addEventListener('scroll', updateScrollProgress);
-
-// Update on load
-window.addEventListener('load', updateScrollProgress);
-
-// Theme Toggle - Using Tailwind's dark mode
-const themeToggle = document.getElementById('themeToggle');
-const html = document.documentElement;
-
-// Initialize theme from localStorage or system preference
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme === 'dark') {
-        html.classList.add('dark');
-    } else if (savedTheme === 'light') {
-        html.classList.remove('dark');
-    } else {
-        // Use system preference if no saved theme
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            html.classList.add('dark');
-        }
-    }
-}
-
-// Toggle theme function
-function toggleTheme() {
-    const isDark = html.classList.contains('dark');
-    
-    if (isDark) {
-        html.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-    } else {
-        html.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-    }
-}
-
-// Initialize theme on page load
-initTheme();
-
-// Theme toggle handler
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        toggleTheme();
-    });
-}
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href === '#') {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        } else {
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                const nav = document.querySelector('nav');
-                const navHeight = nav ? nav.offsetHeight : 0;
-                const targetPosition = target.offsetTop - navHeight - 20;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    });
+// Theme toggle: remembers the choice; with none saved the page follows the system.
+document.getElementById('themeToggle')?.addEventListener('click', () => {
+    const dark = root.classList.toggle('dark');
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch { /* storage blocked */ }
 });
 
-// Intersection Observer for fade-in animations (optional enhancement)
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// Narrow screens: the nav folds into a menu button.
+const menuBtn = document.getElementById('menuToggle');
+const nav = document.getElementById('nav');
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe sections for animation
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
-});
-
-// Form validation enhancement
-const contactForm = document.querySelector('form[action*="formspree"]');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        
-        if (!name || !email || !message) {
-            e.preventDefault();
-            alert('נא למלא את כל השדות');
-            return false;
-        }
-        
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            e.preventDefault();
-            alert('נא להזין כתובת דוא"ל תקינה');
-            return false;
-        }
-    });
+function setMenuOpen(open) {
+    nav?.classList.toggle('open', open);
+    menuBtn?.setAttribute('aria-expanded', String(open));
 }
 
-// Keyboard navigation for gallery images
-document.querySelectorAll('.gallery-image').forEach(img => {
-    img.addEventListener('click', () => {
-        // Open image in new tab when clicked
-        window.open(img.src, '_blank');
-    });
-});
-
-// Lazy loading for images (if needed in future)
-if ('loading' in HTMLImageElement.prototype) {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.src = img.dataset.src;
-    });
-} else {
-    // Fallback for browsers that don't support lazy loading
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-    document.body.appendChild(script);
-}
-
-// Add active state to nav links based on scroll position
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-const highlightNavLink = () => {
-    const scrollY = window.pageYOffset;
-    
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-};
-
-window.addEventListener('scroll', highlightNavLink);
+menuBtn?.addEventListener('click', () => setMenuOpen(!nav.classList.contains('open')));
+nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
 
 // The download button's URL is static, in index.html — a full versioned link to the
-// AnyCPU installer. Build/scripts/build-installer.ps1 rewrites it and pushes this
-// repo at the end of every release, after confirming the new asset downloads.
+// installer, marked data-download-button="main". The sync-download-link workflow rewrites
+// it after every release, once it has confirmed the new asset downloads.
 //
 // It is deliberately NOT resolved in JS. There used to be code here that fetched the
 // release from the GitHub API and set the href at load time; it broke the button for
@@ -229,34 +34,134 @@ window.addEventListener('scroll', highlightNavLink);
 // working API call overwrote it before anyone could notice.
 //
 // So: don't reintroduce a runtime lookup here. If the link is stale, the release
-// script is the thing to fix.
+// workflow is the thing to fix.
+//
+// The workflow rewrites only that one button, so any other download button on the page
+// (data-download-copy) takes its href from it — one source of truth, nothing fetched.
+const mainDownload = document.querySelector('[data-download-button="main"]');
+if (mainDownload) {
+    document.querySelectorAll('[data-download-copy]').forEach(a => { a.href = mainDownload.href; });
+}
 
-// Gallery - Open custom lightbox directly
-const openGalleryBtn = document.getElementById('openGallery');
-const openGalleryMobileBtn = document.getElementById('openGalleryMobile');
+// Hero reel - show and tell. Every picture in the hidden #slides is shown in turn beside
+// the hero; the hero text says what it shows (alt = title, data-desc = description) and
+// the part it belongs to (data-part) lights up. Each picture holds for SLIDE_MS; the
+// current dot fills up meanwhile. Hovering pauses; dots and parts jump.
+(function startReel() {
+    const SLIDE_MS = 6000;
+    const OUT_MS = 300;
 
-function openGallery(e) {
-    e.preventDefault();
-    
-    // Close mobile menu if open
-    if (navMenu && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        const spans = navToggle.querySelectorAll('span');
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '';
-        spans[2].style.transform = '';
+    const reel = document.querySelector('[data-reel]');
+    const pictures = [...document.querySelectorAll('#slides img')];
+    if (!reel || pictures.length === 0) return;
+
+    const frame = reel.querySelector('.reel__frame');
+    const image = frame.querySelector('img');
+    const dots = reel.querySelector('.reel__dots');
+    const tell = document.querySelector('.tell');
+    const tellTitle = tell?.querySelector('.tell__title');
+    const tellText = tell?.querySelector('.tell__text');
+    const parts = [...document.querySelectorAll('.parts [data-part]')];
+    const motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    reel.style.setProperty('--slide-ms', SLIDE_MS + 'ms');
+    pictures.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', pictures[i].alt);
+        dot.addEventListener('click', () => go(i));
+        dots.appendChild(dot);
+    });
+
+    let current = -1;
+    let timer = null;
+
+    function render(index) {
+        const picture = pictures[index];
+        image.src = picture.getAttribute('src');
+        image.alt = picture.alt;
+        if (tellTitle) tellTitle.textContent = picture.alt;
+        if (tellText) tellText.textContent = picture.dataset.desc || '';
+        parts.forEach(p => p.classList.toggle('is-current', p.dataset.part === picture.dataset.part));
+        [...dots.children].forEach((dot, i) => dot.classList.toggle('is-current', i === index));
+        // Restart the entrance animations (and the dot's fill) for the new picture.
+        for (const el of [frame, tell, dots]) {
+            el?.classList.remove('is-entering');
+            void el?.offsetWidth;
+            el?.classList.add('is-entering');
+        }
     }
-    
-    // Open lightbox at first image
-    if (window.lightboxInstance) {
-        window.lightboxInstance.open(0);
+
+    function go(index) {
+        if (index === current) return;
+        const first = current === -1;
+        current = index;
+        if (first || !motionOk) {
+            render(index);
+        } else {
+            frame.classList.add('is-leaving');
+            tell?.classList.add('is-leaving');
+            setTimeout(() => {
+                frame.classList.remove('is-leaving');
+                tell?.classList.remove('is-leaving');
+                render(index);
+            }, OUT_MS);
+        }
+        restart();
     }
-}
 
-if (openGalleryBtn) {
-    openGalleryBtn.addEventListener('click', openGallery);
-}
+    function restart() {
+        clearTimeout(timer);
+        if (motionOk && !reel.matches(':hover')) timer = setTimeout(() => go((current + 1) % pictures.length), SLIDE_MS);
+    }
 
-if (openGalleryMobileBtn) {
-    openGalleryMobileBtn.addEventListener('click', openGallery);
-}
+    parts.forEach(part => part.addEventListener('click', () => {
+        const first = pictures.findIndex(p => p.dataset.part === part.dataset.part);
+        if (first >= 0) go(first);
+    }));
+    reel.addEventListener('mouseenter', () => { clearTimeout(timer); reel.classList.add('is-paused'); });
+    reel.addEventListener('mouseleave', () => { reel.classList.remove('is-paused'); restart(); });
+
+    go(0);
+})();
+
+// Contact window: [data-open-contact] opens it; the close button, Esc or a click on the
+// backdrop closes it.
+(function contactDialog() {
+    const dialog = document.getElementById('contact');
+    if (!dialog) return;
+    document.querySelectorAll('[data-open-contact]').forEach(b => b.addEventListener('click', e => {
+        e.preventDefault();
+        dialog.showModal();
+    }));
+    dialog.querySelector('[data-close-contact]')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+
+    // Send from inside the window (Formspree's JSON API) instead of leaving the site for
+    // Formspree's thank-you page; the result is shown in the window.
+    const form = dialog.querySelector('form');
+    const status = dialog.querySelector('.contact__status');
+    const submit = form.querySelector('[type=submit]');
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        submit.disabled = true;
+        status.textContent = 'שולח…';
+        status.className = 'contact__status';
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' },
+            });
+            if (!response.ok) throw new Error(String(response.status));
+            form.reset();
+            status.textContent = 'ההודעה נשלחה. תודה!';
+            status.classList.add('is-ok');
+        } catch {
+            status.textContent = 'השליחה נכשלה. נסו שוב מאוחר יותר.';
+            status.classList.add('is-error');
+        } finally {
+            submit.disabled = false;
+        }
+    });
+})();
