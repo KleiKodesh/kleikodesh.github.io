@@ -478,4 +478,5 @@ body { padding-bottom: 40px; } /* the strip never covers the footer */
   to   { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .star-popup { animation: none; } }
+@media (max-width: 600px) { .star-popup { max-height: 50vh; } }
 .star-popup li b { display: inline; font-size: inherit; margin: 0; color: var(--text); font-weight: 600; }
