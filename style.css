@@ -458,7 +458,7 @@ body { padding-bottom: 40px; } /* the strip never covers the footer */
 .footer__hint { margin: 6px 0 0; max-width: 240px; color: var(--muted); font-size: 12px; line-height: 1.5; }
 
 /* Star request card: bottom corner (start side), above the quotes strip. */
-.star-popup { position: fixed; inset-inline-start: 16px; bottom: 56px; z-index: 50; width: min(360px, calc(100vw - 32px)); max-height: calc(100vh - 120px); overflow-y: auto;
+.star-popup { position: fixed; left: 16px; bottom: 56px; z-index: 50; width: min(360px, calc(100vw - 32px)); max-height: calc(100vh - 120px); overflow-y: auto;
   padding: 16px 16px 14px; border: 1px solid var(--border, rgba(0,0,0,.12)); border-radius: 10px;
   background: var(--bg, #fff); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18); }
 .star-popup[hidden] { display: none; }
