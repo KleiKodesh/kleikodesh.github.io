@@ -239,11 +239,16 @@
           <small data-en="No installation: unzip and run, also from a USB drive.">בלי התקנה: פותחים את הקובץ ומריצים, גם מדיסק און קי.</small>
         </span>
       </a>
-      <a class="download-option" href="#" data-library-download hidden>
+      <!-- Always the newest stable library release. A large library is split into parts
+           (seforim-schemaN.db.zst.part-000, -001, ...): the page lists them all, and the app's
+           import takes any one of them and finds the rest beside it. -->
+      <a class="download-option" href="https://github.com/Otzaria/SeforimLibrary/releases/latest"
+        target="_blank" rel="noopener" data-library-download>
         <img src="images/kitvei-logo.png" alt="" width="40" height="40" />
         <span>
           <b data-en="The books library only">מאגר הספרים בלבד</b>
-          <small data-en="The library database, for use with the app.">מסד הנתונים של הספרייה, לשימוש עם התוכנה.</small>
+          <small data-en="On the page, download the file seforim-schema…db.zst (or all its .part files, into one folder).">בדף שנפתח, הורידו את הקובץ seforim-schema…db.zst (או את כל קבצי ה-part שלו, לאותה תיקייה).</small>
+          <small data-en="The app can then unpack and import the file: in its setup, choose the downloaded file.">התוכנה יודעת לפתוח ולייבא את הקובץ: בהגדרה הראשונית בחרו את הקובץ שהורד.</small>
         </span>
       </a>
     </dialog>
@@ -271,6 +276,7 @@
       <img data-part="kitvei" data-desc="ספרייה תורנית שלמה: תנ״ך, ש״ס, מפרשים ופוסקים, עם חיפוש בכל הטקסט, היברו-בוקס, מילון ולוח שנה. זמינה כחלונית בתוך וורד וכתוכנה עצמאית." data-title-en="Kitvei Hakodesh" data-desc-en="A complete Torah library: Tanakh, Shas, commentaries and halachic works, with full-text search, HebrewBooks, a dictionary and a calendar. Available as a pane inside Word and as a standalone app." data-shot="kitvei-home" alt="כתבי הקודש" width="600" height="678" />
       <img data-part="kitvei" data-desc="ספר פתוח עם המפרשים לצידו: רש״י, אבן עזרא ושאר המפרשים על כל פסוק, בלחיצה." data-title-en="Kitvei Hakodesh — reading a book" data-desc-en="An open book with its commentaries beside it: Rashi, Ibn Ezra and the other commentaries on every verse, one click away." data-shot="kitvei-book" alt="כתבי הקודש — עיון בספר" width="600" height="678" />
       <img data-part="kitvei" data-desc="חיפוש מהיר בכל הספרים בבת אחת, עם המילים שנמצאו מודגשות בתוצאות." data-title-en="Kitvei Hakodesh — search the whole library" data-desc-en="Fast search across every book at once, with the matching words highlighted in the results." data-shot="kitvei-search" alt="כתבי הקודש — חיפוש בכל הספרייה" width="600" height="678" />
+      <img data-part="kitvei" data-desc="חיפוש מסמכים במחשב לפי שם הקובץ או התיקייה: קבצי וורד, PDF ועוד, ופתיחתם ישירות בתוכנה." data-title-en="Kitvei Hakodesh — file search" data-desc-en="Find documents on your computer by file or folder name: Word files, PDFs and more, and open them right in the app." data-shot="kitvei-filesearch" alt="כתבי הקודש — חיפוש קבצים" width="600" height="678" />
       <img data-part="kitvei" data-desc="פותח מסמכי Word ישירות בתוכנה, בתצוגה נקייה ונוחה לקריאה." data-title-en="Kitvei Hakodesh — document viewer" data-desc-en="Word documents open right in the app, in a clean view that is easy to read." data-shot="kitvei-docx" alt="כתבי הקודש — מציג מסמכים" width="600" height="678" />
       <img data-part="kitvei" data-desc="ספרי PDF נפתחים בתוכנה, עם כלי סימון והערות." data-title-en="Kitvei Hakodesh — PDF viewer" data-desc-en="PDF books open in the app, with marking and note tools." data-shot="kitvei-pdf" alt="כתבי הקודש — מציג PDF" width="600" height="678" />
       <img data-part="kitvei" data-desc="חיפוש בקטלוג היברו-בוקס לפי שם, מחבר ונושא, והורדת הספר בלחיצה." data-title-en="Kitvei Hakodesh — HebrewBooks" data-desc-en="Search the HebrewBooks catalog by title, author and subject, and download a book with one click." data-shot="kitvei-hebrewbooks" alt="כתבי הקודש — היברו-בוקס" width="600" height="678" />
