@@ -268,6 +268,15 @@
       </div>
     </dialog>
 
+    <!-- Star request: a small card shown once per visitor shortly after the page loads
+         (script.js; remembered in localStorage, so it never nags). -->
+    <aside class="star-popup" id="star-popup" hidden>
+      <button type="button" class="icon-btn star-popup__close" aria-label="סגירה" data-en-aria-label="Close">✕</button>
+      <b data-en="Help us get a signing certificate">עזרו לנו לקבל תעודת חתימה</b>
+      <p data-en="Stars on GitHub help the project get a code-signing certificate, so Windows stops warning when you install.">כוכבים בגיטהאב עוזרים לפרויקט לקבל תעודת חתימה דיגיטלית, כדי ש-Windows יפסיק להזהיר בהתקנה.</p>
+      <a class="star-popup__button" href="https://github.com/KleiKodesh/KleiKodeshProject" target="_blank" rel="noopener" data-en="★ Star us on GitHub">★ סמנו כוכב בגיטהאב</a>
+    </aside>
+
     <!-- Contact form window (sent through Formspree). Opened by [data-open-contact]. -->
     <dialog class="contact-dialog" id="contact">
       <form class="contact" action="https://formspree.io/f/mnndrdyq" method="POST">

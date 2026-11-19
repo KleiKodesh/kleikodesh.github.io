@@ -260,3 +260,19 @@ if (mainDownload) {
     new MutationObserver(setSpeed).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 })();
 
+
+// Star request: once per visitor, a moment after load; closing it or clicking the star
+// remembers that. Without storage it simply shows each visit.
+(() => {
+    const popup = document.getElementById('star-popup');
+    if (!popup) return;
+    const KEY = 'starPopupDone';
+    try { if (localStorage.getItem(KEY)) return; } catch { /* storage blocked */ }
+    const done = () => {
+        popup.hidden = true;
+        try { localStorage.setItem(KEY, '1'); } catch { /* storage blocked */ }
+    };
+    popup.querySelector('.star-popup__close').addEventListener('click', done);
+    popup.querySelector('.star-popup__button').addEventListener('click', done);
+    setTimeout(() => { popup.hidden = false; }, 1500);
+})();
