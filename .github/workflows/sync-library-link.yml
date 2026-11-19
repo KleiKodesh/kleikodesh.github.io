@@ -1,0 +1,71 @@
+# Keeps the "books library only" download pointed at the files of Otzaria's newest stable
+# library release (Otzaria/SeforimLibrary, published about weekly). Static links in
+# index.html, rewritten here - the page never calls the GitHub API (see script.js).
+name: Sync library link
+
+on:
+  schedule:
+    - cron: "41 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-download-link   # shares index.html with the installer link sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Point the library download at the newest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # Newest stable release that has a database: the highest schema's single
+          # seforim-schemaN.db.zst, or else its .part-NNN files in order.
+          gh api --paginate repos/Otzaria/SeforimLibrary/releases > releases.json
+          python3 - <<'PY'
+          import json, re, sys
+          releases = [r for r in json.load(open('releases.json')) if not r['draft'] and not r['prerelease']]
+          releases.sort(key=lambda r: r['published_at'], reverse=True)
+          for r in releases:
+              assets = {a['name']: a['browser_download_url'] for a in r['assets']}
+              schemas = sorted({int(m.group(1)) for n in assets if (m := re.match(r'seforim-schema(\d+)\.db\.zst', n))}, reverse=True)
+              for schema in schemas:
+                  base = f'seforim-schema{schema}.db.zst'
+                  if base in assets:
+                      urls = [assets[base]]
+                  else:
+                      parts = sorted((int(m.group(1)), n) for n in assets if (m := re.fullmatch(re.escape(base) + r'\.part-(\d+)', n)))
+                      if not parts or [i for i, _ in parts] != list(range(len(parts))):
+                          continue
+                      urls = [assets[n] for _, n in parts]
+                  print(f"{r['tag_name']}: {len(urls)} file(s)")
+                  open('urls.txt', 'w').write('\n'.join(urls) + '\n')
+                  sys.exit(0)
+          sys.exit('no stable release with a library database')
+          PY
+          # Never link to something that 404s.
+          while read -r url; do curl -sfIL --max-time 60 "$url" > /dev/null || { echo "::error::$url is not downloadable"; exit 1; }; done < urls.txt
+          python3 - <<'PY'
+          import re
+          urls = open('urls.txt').read().split()
+          s = open('index.html', encoding='utf-8').read()
+          block = '\n'.join(f'      <a hidden data-library-part href="{u}"></a>' for u in urls)
+          s, n = re.subn(r'(<!-- library-parts:start -->\n).*?(\n\s*<!-- library-parts:end -->)', lambda m: m.group(1) + block + m.group(2), s, flags=re.S)
+          s, k = re.subn(r'(<a class="download-option" href=")[^"]*(" data-library-download>)', lambda m: m.group(1) + urls[0] + m.group(2), s)
+          if n != 1 or k != 1:
+              raise SystemExit('library download markers not found in index.html')
+          open('index.html', 'w', encoding='utf-8').write(s)
+          PY
+          if git diff --quiet -- index.html; then echo "already up to date"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "library download: $(head -1 urls.txt | sed 's#.*/download/##; s#/.*##')" -- index.html
+          git pull --rebase -q
+          git push

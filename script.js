@@ -258,3 +258,16 @@ if (mainDownload) {
     setSpeed();
     new MutationObserver(setSpeed).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 })();
+
+// "Books library only": one click downloads every part of the library (a large library is
+// split into parts). The links are static, rewritten daily by the sync-library-link workflow.
+const libraryDownload = document.querySelector('[data-library-download]');
+if (libraryDownload) {
+    libraryDownload.addEventListener('click', event => {
+        const parts = [...document.querySelectorAll('[data-library-part]')];
+        if (parts.length < 2) return; // one file: the card's own link does it
+        event.preventDefault();
+        // Spaced out: browsers ignore several downloads started in the same instant.
+        parts.forEach((part, i) => setTimeout(() => part.click(), i * 1200));
+    });
+}

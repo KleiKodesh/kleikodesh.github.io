@@ -239,18 +239,24 @@
           <small data-en="No installation: unzip and run, also from a USB drive.">בלי התקנה: פותחים את הקובץ ומריצים, גם מדיסק און קי.</small>
         </span>
       </a>
-      <!-- Always the newest stable library release. A large library is split into parts
-           (seforim-schemaN.db.zst.part-000, -001, ...): the page lists them all, and the app's
-           import takes any one of them and finds the rest beside it. -->
-      <a class="download-option" href="https://github.com/Otzaria/SeforimLibrary/releases/latest"
-        target="_blank" rel="noopener" data-library-download>
+      <!-- Otzaria's books library, newest stable release. A large library comes in parts
+           (seforim-schemaN.db.zst.part-000, -001, ...): one click downloads every part
+           (script.js clicks each data-library-part link). The sync-library-link workflow
+           rewrites the block between the markers daily - static links, nothing fetched at
+           runtime (see script.js on why). The app's import takes any one part and finds
+           the rest beside it. -->
+      <a class="download-option" href="https://github.com/Otzaria/SeforimLibrary/releases/download/v38-20261112163847/seforim-schema7.db.zst.part-000" data-library-download>
         <img src="images/kitvei-logo.png" alt="" width="40" height="40" />
         <span>
           <b data-en="The books library only">מאגר הספרים בלבד</b>
-          <small data-en="On the page, download the file seforim-schema…db.zst (or all its .part files, into one folder).">בדף שנפתח, הורידו את הקובץ seforim-schema…db.zst (או את כל קבצי ה-part שלו, לאותה תיקייה).</small>
-          <small data-en="The app can then unpack and import the file: in its setup, choose the downloaded file.">התוכנה יודעת לפתוח ולייבא את הקובץ: בהגדרה הראשונית בחרו את הקובץ שהורד.</small>
+          <small data-en="Downloads the library files (about 2.2 GB). Keep them together in one folder.">מוריד את קבצי המאגר (כ-2.2 GB). שמרו אותם יחד באותה תיקייה.</small>
+          <small data-en="The app can then unpack and import them: in its setup, choose one of the downloaded files.">התוכנה יודעת לפתוח ולייבא אותם: בהגדרה הראשונית בחרו אחד מהקבצים שהורדו.</small>
         </span>
       </a>
+      <!-- library-parts:start -->
+      <a hidden data-library-part href="https://github.com/Otzaria/SeforimLibrary/releases/download/v38-20261112163847/seforim-schema7.db.zst.part-000"></a>
+      <a hidden data-library-part href="https://github.com/Otzaria/SeforimLibrary/releases/download/v38-20261112163847/seforim-schema7.db.zst.part-001"></a>
+      <!-- library-parts:end -->
     </dialog>
 
     <!-- Contact form window (sent through Formspree). Opened by [data-open-contact]. -->
