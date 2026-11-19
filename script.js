@@ -198,7 +198,8 @@ if (mainDownload) {
     document.querySelectorAll('[data-open-download]').forEach(b => b.addEventListener('click', () => dialog.showModal()));
     dialog.querySelectorAll('[data-close-dialog]').forEach(b => b.addEventListener('click', () => dialog.close()));
     dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
-    dialog.querySelectorAll('.download-option').forEach(a => a.addEventListener('click', () => dialog.close()));
+    // A download closes the window - except the library, whose files are clicked one by one.
+    dialog.querySelectorAll('a.download-option').forEach(a => a.addEventListener('click', () => dialog.close()));
 })();
 
 // Contact window: [data-open-contact] opens it; the close button, Esc or a click on the
@@ -259,15 +260,3 @@ if (mainDownload) {
     new MutationObserver(setSpeed).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 })();
 
-// "Books library only": one click downloads every part of the library (a large library is
-// split into parts). The links are static, rewritten daily by the sync-library-link workflow.
-const libraryDownload = document.querySelector('[data-library-download]');
-if (libraryDownload) {
-    libraryDownload.addEventListener('click', event => {
-        const parts = [...document.querySelectorAll('[data-library-part]')];
-        if (parts.length < 2) return; // one file: the card's own link does it
-        event.preventDefault();
-        // Spaced out: browsers ignore several downloads started in the same instant.
-        parts.forEach((part, i) => setTimeout(() => part.click(), i * 1200));
-    });
-}

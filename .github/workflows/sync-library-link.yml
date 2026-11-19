@@ -56,10 +56,11 @@ jobs:
           import re
           urls = open('urls.txt').read().split()
           s = open('index.html', encoding='utf-8').read()
-          block = '\n'.join(f'      <a hidden data-library-part href="{u}"></a>' for u in urls)
+          # One button per file ("File 1", "File 2"...; Hebrew label by code points).
+          label = 'קובץ'
+          block = '\n'.join(f'            <a class="library-part" data-library-part href="{u}" data-en="File {i + 1}">{label} {i + 1}</a>' for i, u in enumerate(urls))
           s, n = re.subn(r'(<!-- library-parts:start -->\n).*?(\n\s*<!-- library-parts:end -->)', lambda m: m.group(1) + block + m.group(2), s, flags=re.S)
-          s, k = re.subn(r'(<a class="download-option" href=")[^"]*(" data-library-download>)', lambda m: m.group(1) + urls[0] + m.group(2), s)
-          if n != 1 or k != 1:
+          if n != 1:
               raise SystemExit('library download markers not found in index.html')
           open('index.html', 'w', encoding='utf-8').write(s)
           PY

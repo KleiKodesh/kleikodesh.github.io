@@ -240,23 +240,25 @@
         </span>
       </a>
       <!-- Otzaria's books library, newest stable release. A large library comes in parts
-           (seforim-schemaN.db.zst.part-000, -001, ...): one click downloads every part
-           (script.js clicks each data-library-part link). The sync-library-link workflow
+           (seforim-schemaN.db.zst.part-000, -001, ...): one button per file - browsers block a
+           second download started by script. The sync-library-link workflow
            rewrites the block between the markers daily - static links, nothing fetched at
            runtime (see script.js on why). The app's import takes any one part and finds
            the rest beside it. -->
-      <a class="download-option" href="https://github.com/Otzaria/SeforimLibrary/releases/download/v38-20261112163847/seforim-schema7.db.zst.part-000" data-library-download>
+      <div class="download-option" data-library-download>
         <img src="images/kitvei-logo.png" alt="" width="40" height="40" />
         <span>
           <b data-en="The books library for Kitvei Hakodesh">מאגר הספרים לכתבי הקודש</b>
           <small data-en="On its first run, the program asks you to choose the downloaded files.">בהפעלה הראשונה התוכנה תבקש לבחור את הקבצים שהורדו.</small>
           <small data-en="Alternatively, the library can be downloaded from within the program itself.">לחילופין ניתן להוריד את המאגר דרך התוכנה עצמה.</small>
+          <span class="library-parts">
+            <!-- library-parts:start -->
+            <a class="library-part" data-library-part href="https://github.com/Otzaria/SeforimLibrary/releases/download/v38-20261112163847/seforim-schema7.db.zst.part-000" data-en="File 1">קובץ 1</a>
+            <a class="library-part" data-library-part href="https://github.com/Otzaria/SeforimLibrary/releases/download/v38-20261112163847/seforim-schema7.db.zst.part-001" data-en="File 2">קובץ 2</a>
+            <!-- library-parts:end -->
+          </span>
         </span>
-      </a>
-      <!-- library-parts:start -->
-      <a hidden data-library-part href="https://github.com/Otzaria/SeforimLibrary/releases/download/v38-20261112163847/seforim-schema7.db.zst.part-000"></a>
-      <a hidden data-library-part href="https://github.com/Otzaria/SeforimLibrary/releases/download/v38-20261112163847/seforim-schema7.db.zst.part-001"></a>
-      <!-- library-parts:end -->
+      </div>
     </dialog>
 
     <!-- Contact form window (sent through Formspree). Opened by [data-open-contact]. -->

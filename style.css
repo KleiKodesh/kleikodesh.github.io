@@ -450,4 +450,7 @@ body { padding-bottom: 40px; } /* the strip never covers the footer */
 .download-option img { width: 40px; height: 40px; flex: none; }
 .download-option b { display: block; font-weight: 600; }
 .download-option small { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; line-height: 1.4; }
-.download-option[hidden] { display: none; } /* the library card stays hidden until it has a real link */
+.download-option[hidden] { display: none; }
+.library-parts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.library-part { padding: 4px 12px; border: 1px solid var(--accent); border-radius: 6px; font-size: 13px; }
+.library-part:hover { background: var(--accent); color: #fff; text-decoration: none; }
