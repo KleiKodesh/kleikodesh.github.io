@@ -438,7 +438,7 @@ body { padding-bottom: 40px; } /* the strip never covers the footer */
 
 /* ---------- Download window: one card per choice ---------- */
 
-.download-dialog { width: min(460px, calc(100vw - 32px)); }
+.download-dialog { width: min(540px, calc(100vw - 32px)); }
 .download-option {
   display: flex; align-items: center; gap: 14px;
   margin-top: 10px; padding: 14px 16px;
