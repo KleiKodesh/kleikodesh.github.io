@@ -207,10 +207,12 @@ if (mainDownload) {
 (function contactDialog() {
     const dialog = document.getElementById('contact');
     if (!dialog) return;
-    document.querySelectorAll('[data-open-contact]').forEach(b => b.addEventListener('click', e => {
+    // Delegated: a language switch rebuilds links inside translated text (the star popup's).
+    document.addEventListener('click', e => {
+        if (!e.target.closest('[data-open-contact]')) return;
         e.preventDefault();
         dialog.showModal();
-    }));
+    });
     dialog.querySelector('[data-close-contact]')?.addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
 
