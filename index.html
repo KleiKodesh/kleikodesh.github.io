@@ -252,20 +252,18 @@
            rewrites the block between the markers daily - static links, nothing fetched at
            runtime (see script.js on why). The app's import takes any one part and finds
            the rest beside it. -->
-      <div class="download-option" data-library-download>
-        <img src="images/kitvei-logo.png" alt="" width="40" height="40" />
-        <span>
-          <b data-en="The books library for Kitvei Hakodesh">מאגר הספרים לכתבי הקודש</b>
-          <small data-en="Download all the files below into the same folder. On its first run, the program asks you to choose them.">יש להוריד את כל הקבצים שלמטה לאותה תיקייה. בהפעלה הראשונה התוכנה תבקש לבחור אותם.</small>
-          <small data-en="Alternatively, the library can be downloaded from within the program itself.">לחילופין ניתן להוריד את המאגר דרך התוכנה עצמה.</small>
+      <section class="library-section" data-library-download>
+        <h3 data-en="Books library (optional)">מאגר הספרים (רשות)</h3>
+        <p class="library-section__skip" data-en="&lt;b&gt;Already have Otzaria or Zayit? No need to download.&lt;/b&gt; Kitvei Hakodesh uses their library as it is.">
+          <b>יש לכם כבר אוצריא או זית? אין צורך להוריד.</b> כתבי הקודש משתמש במאגר הספרים שלהם כפי שהוא.</p>
+        <p data-en="Otherwise: download all the files below into the same folder. On its first run, the program asks you to choose them. Alternatively, the library can be downloaded from within the program itself.">אחרת: יש להוריד את כל הקבצים שלמטה לאותה תיקייה. בהפעלה הראשונה התוכנה תבקש לבחור אותם. לחילופין ניתן להוריד את המאגר דרך התוכנה עצמה.</p>
           <span class="library-parts">
             <!-- library-parts:start -->
             <a class="library-part" data-library-part href="https://github.com/Otzaria/SeforimLibrary/releases/download/v39-20261119190809/seforim-schema7.db.zst.part-000" data-en="File 1 of 2">קובץ 1 מתוך 2</a>
             <a class="library-part" data-library-part href="https://github.com/Otzaria/SeforimLibrary/releases/download/v39-20261119190809/seforim-schema7.db.zst.part-001" data-en="File 2 of 2">קובץ 2 מתוך 2</a>
             <!-- library-parts:end -->
           </span>
-        </span>
-      </div>
+      </section>
     </dialog>
 
     <!-- Star request: a small friendly card, shown at once on every visit; ✕ hides it for
