@@ -451,17 +451,10 @@ body { padding-bottom: 40px; } /* the strip never covers the footer */
 .download-option b { display: block; font-weight: 600; }
 .download-option small { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; line-height: 1.4; }
 .download-option[hidden] { display: none; }
-.library-section {
-  margin-top: 22px; padding: 14px 16px;
-  border-top: 2px solid var(--border); background: var(--header); border-radius: 8px;
-}
-.library-section h3 { margin: 0 0 10px; font-size: 16px; font-weight: 600; }
-.library-section p { margin: 0 0 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
-.library-section__skip {
-  padding: 10px 12px; border-inline-start: 4px solid var(--accent); border-radius: 6px;
-  background: var(--bg); color: var(--text) !important; font-size: 14px !important;
-}
-.library-section__skip b { color: var(--accent); }
+.library-section { margin-top: 20px; padding: 16px 16px 0; border-top: 1px solid var(--border); }
+.library-section h3 { margin: 0 0 4px; font-size: 16px; font-weight: 600; }
+.library-section p { margin: 2px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
+.library-section__skip b { color: var(--text); font-weight: 600; }
 .library-parts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
 .library-part { padding: 4px 12px; border: 1px solid var(--accent); border-radius: 6px; font-size: 13px; }
 .library-part:hover { background: var(--accent); color: #fff; text-decoration: none; }
