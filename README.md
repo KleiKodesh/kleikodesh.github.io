@@ -15,10 +15,6 @@ kleikodesh-website/
 ├── script.js               — Theme toggle, scroll progress, gallery interactions
 ├── lightbox.css / .js      — Lightbox for screenshot gallery
 ├── photoswipe.esm.js / .css — PhotoSwipe image viewer
-├── Klei_Kodesh.png            — Social preview image
-├── Klei_Kodesh.ico            — Favicon
-├── Klei_Kodesh-Logo.png       — Logo asset
-├── Klei_Kodesh-Logo copy.png  — Logo variant
 ├── mitmachim-favicon.ico      — Secondary favicon
 ├── photoswipe-lightbox.esm.js — PhotoSwipe lightbox module
 ├── images/                    — Screenshots and logos
